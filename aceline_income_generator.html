@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aceline Income Generator - Start Your Journey to Financial Freedom</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #E31B23;
+            --primary-dark: #c4171e;
+            --dark-bg: #050505;
+            --light-bg: #f9fafb;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --accent: #22D3EE;
+            --gold: #FBBF24;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============ SHARED STYLES ============ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #ff4444);
+            color: white;
+            box-shadow: 0 4px 15px rgba(227, 27, 35, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(227, 27, 35, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(227, 27, 35, 0.1);
+        }
+
+        /* ============ NAVBAR ============ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1rem 0;
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .logo-icon img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Desktop */
+        .logo-desktop-text {
+            display: inline;
+        }
+
+        .logo-mobile-text {
+            display: none;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-right a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-right a:hover {
+            color: var(--primary);
+        }
+
+        /* ============ PAGE SECTIONS ============ */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* ============ LANDING PAGE ============ */
+
+        #landing {
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        /* ==================================================
+   FULL-WIDTH HERO
+================================================== */
+
+        .hero {
+            position: relative;
+
+            min-height: calc(100vh - 80px);
+
+            padding: 70px 0 90px;
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
+
+            /* FULL SCREEN BACKGROUND */
+            background-image:
+                linear-gradient(90deg,
+                    rgba(250, 250, 250, 0.96) 0%,
+                    rgba(250, 250, 250, 0.90) 32%,
+                    rgba(250, 250, 250, 0.62) 60%,
+                    rgba(250, 250, 250, 0.20) 100%),
+                url("hero-img1.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+
+        /* ==================================================
+   CONTENT CONTAINER
+================================================== */
+
+
+        .hero .container {
+            width: 100%;
+            max-width: 1240px;
+
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(380px, 0.85fr);
+
+            gap: 4rem;
+
+            align-items: center;
+        }
+
+        /* ==================================================
+   DECORATIVE GLOW
+================================================== */
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+            height: 600px;
+
+            left: -300px;
+            top: -200px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle,
+                    rgba(227, 27, 35, 0.13),
+                    transparent 70%);
+
+            filter: blur(30px);
+
+            pointer-events: none;
+        }
+
+
+        /* ==================================================
+   SECOND GLOW
+================================================== */
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            right: -250px;
+            bottom: -250px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle,
+                    rgba(227, 27, 35, 0.14),
+                    transparent 70%);
+
+            filter: blur(30px);
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+   CONTENT LAYERS
+========================= */
+
+        .hero-left,
+        .hero-right {
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* =========================
+   LEFT SIDE
+========================= */
+
+        .hero-left {
+            max-width: 720px;
+        }
+
+
+        /* =========================
+   EYEBROW
+========================= */
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 7px 13px;
+            margin-bottom: 1.4rem;
+
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 100px;
+
+            background: rgba(255, 255, 255, 0.85);
+
+            -webkit-backdrop-filter: blur(10px);
+
+            backdrop-filter: blur(10px);
+
+            color: var(--primary);
+
+            font-size: 0.78rem;
+            font-weight: 800;
+
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .hero-eyebrow span {
+            width: 7px;
+            height: 7px;
+
+            background: var(--primary);
+
+            border-radius: 50%;
+        }
+
+
+        /* =========================
+   HEADLINE
+========================= */
+
+        .hero-left h1 {
+            max-width: 720px;
+
+            margin: 0 0 1.4rem;
+
+            font-size: clamp(2.8rem, 5vw, 4.8rem);
+
+            font-weight: 800;
+
+            line-height: 1.05;
+
+            letter-spacing: -0.045em;
+
+            color: var(--text-dark);
+        }
+
+        .hero-left .highlight {
+            color: var(--primary);
+        }
+
+
+        /* =========================
+   DESCRIPTION
+========================= */
+
+        .hero-left>p {
+            max-width: 620px;
+
+            margin-bottom: 1.8rem;
+
+            color: #555;
+
+            font-size: 1.08rem;
+
+            line-height: 1.75;
+        }
+
+
+        /* =========================
+   FEATURES
+========================= */
+
+        .hero-features {
+            display: grid;
+
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 0.8rem 2rem;
+
+            max-width: 650px;
+
+            padding: 0;
+            margin: 0 0 2.2rem;
+
+            list-style: none;
+        }
+
+        .hero-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            margin: 0;
+
+            color: #303030;
+
+            font-size: 0.94rem;
+
+            font-weight: 600;
+        }
+
+        .hero-features li::before {
+            content: "✓";
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            flex: 0 0 22px;
+
+            width: 22px;
+            height: 22px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 68, 68, 0.1);
+
+            color: var(--primary);
+
+            font-size: 0.75rem;
+
+            font-weight: 900;
+        }
+
+
+        /* =========================
+   BUTTONS
+========================= */
+
+        .hero-buttons {
+            display: flex;
+
+            align-items: center;
+
+            gap: 0.8rem;
+
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons .btn {
+            min-height: 50px;
+
+            padding: 0 1.4rem;
+
+            border-radius: 10px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================
+   TRUST
+========================= */
+
+        .hero-trust {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-top: 1.4rem;
+
+            color: #777;
+
+            font-size: 0.78rem;
+        }
+
+        .hero-trust strong {
+            color: #333;
+        }
+
+
+        /* ==================================================
+   RIGHT OFFER CARD
+================================================== */
+
+        .hero-right {
+            position: relative;
+
+            min-height: 520px;
+
+            padding: 3rem;
+
+            border-radius: 28px;
+
+            overflow: hidden;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, 0.20);
+        }
+
+
+        /* =========================
+   CARD IMAGE
+========================= */
+
+        .hero-image {
+            position: absolute;
+
+            inset: 0;
+
+            background-image: url("hero-img.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            transform: scale(1.02);
+
+            z-index: 0;
+        }
+
+
+        /* =========================
+   CARD RED OVERLAY
+========================= */
+
+        .hero-overlay {
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(135deg,
+                    rgba(190, 25, 25, 0.55),
+                    rgba(220, 45, 45, 0.68));
+
+            z-index: 1;
+        }
+
+        .hero-overlay::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(90deg,
+                    rgba(0, 0, 0, 0.35),
+                    transparent 80%);
+        }
+
+
+        /* =========================
+   OFFER CONTENT
+========================= */
+
+        .offer-content {
+            position: relative;
+
+            z-index: 3;
+
+            width: 100%;
+
+            max-width: 430px;
+        }
+
+        .offer-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 7px 12px;
+
+            margin-bottom: 1.4rem;
+
+            border: 1px solid rgba(255, 255, 255, 0.3);
+
+            border-radius: 100px;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            backdrop-filter: blur(10px);
+
+            font-size: 0.7rem;
+
+            font-weight: 800;
+
+            letter-spacing: 0.08em;
+        }
+
+        .hero-right h2 {
+            max-width: 400px;
+
+            margin: 0 0 1rem;
+
+            font-size: 2.6rem;
+
+            line-height: 1.08;
+
+            letter-spacing: -0.04em;
+
+            font-weight: 800;
+        }
+
+        .offer-subtitle {
+            max-width: 390px;
+
+            margin: 0 0 1.5rem;
+
+            color: rgba(255, 255, 255, 0.88);
+
+            font-size: 0.98rem;
+
+            line-height: 1.65;
+        }
+
+
+        /* =========================
+   PRICE BOX
+========================= */
+
+        .price-box {
+            padding: 1.2rem 1.3rem;
+
+            margin-bottom: 1.1rem;
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            border-radius: 16px;
+
+            background: rgba(0, 0, 0, 0.18);
+
+            backdrop-filter: blur(12px);
+        }
+
+        .price-label {
+            display: block;
+
+            margin-bottom: 0.4rem;
+
+            color: rgba(255, 255, 255, 0.7);
+
+            font-size: 0.7rem;
+
+            font-weight: 800;
+
+            letter-spacing: 0.1em;
+        }
+
+        .price-row {
+            display: flex;
+
+            align-items: baseline;
+        }
+
+        .price-currency {
+            font-size: 1.3rem;
+
+            font-weight: 700;
+        }
+
+        .price-amount {
+            font-size: 3.4rem;
+
+            font-weight: 900;
+
+            line-height: 1;
+
+            letter-spacing: -0.05em;
+        }
+
+        .price-desc {
+            margin-top: 0.5rem;
+
+            color: rgba(255, 255, 255, 0.7);
+
+            font-size: 0.75rem;
+        }
+
+
+        /* =========================
+   OFFER BUTTON
+========================= */
+
+        .hero-right .btn-primary {
+            width: 100%;
+
+            min-height: 55px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background: white;
+
+            color: var(--primary);
+
+            font-size: 0.95rem;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            transition: all 0.2s ease;
+        }
+
+        .hero-right .btn-primary:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+
+
+        /* =========================
+   OFFER NOTE
+========================= */
+
+        .offer-note {
+            margin-top: 0.9rem;
+
+            text-align: center;
+
+            color: rgba(255, 255, 255, 0.72);
+
+            font-size: 0.72rem;
+        }
+
+
+
+
+        /* ============ PAYMENT PAGE ============ */
+        .payment-container {
+            max-width: 600px;
+            margin: 100px auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-container h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.9rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .order-summary {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+        }
+
+        .summary-row.total {
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-top: 2px solid #ddd;
+            padding-top: 1rem;
+            color: var(--primary);
+        }
+
+        .payment-form {
+            width: 100%;
+        }
+
+        .payment-form .btn-primary {
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        /* ============ REGISTRATION PAGE ============ */
+        .register-container {
+            max-width: 600px;
+            margin: 100px auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .register-container h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .register-container p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        /* ============ LOGIN PAGE ============ */
+        .login-container {
+            max-width: 500px;
+            margin: 100px auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+
+        .login-form .btn-primary {
+            width: 100%;
+            padding: 1rem;
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .login-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ============ DASHBOARD ============ */
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--primary), #ff4444);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dashboard-header h1 {
+            font-size: 2rem;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .module-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .module-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(227, 27, 35, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .module-icon {
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 1.2rem;
+
+            border-radius: 12px;
+
+            background: rgba(227, 27, 35, 0.08);
+
+            color: var(--primary);
+
+            font-size: 1.35rem;
+        }
+
+        .module-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .module-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .module-status {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--light-bg);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .module-status.completed {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--light-bg);
+            border-radius: 15px;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .empty-state p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+
+        /* =========================
+   MOBILE
+========================= */
+
+        @media (max-width: 900px) {
+
+            .container {
+                padding: 40px 20px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding: 50px 0 70px;
+                background-position: center;
+            }
+
+            .hero .container {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 3rem;
+                width: 100%;
+            }
+
+            .hero-right {
+                min-height: 500px;
+            }
+
+            .hero-left h1 {
+                font-size: clamp(2.6rem, 9vw, 4rem);
+            }
+
+            .payment-container {
+                max-width: 600px;
+                margin: 100px auto;
+                background: white;
+                padding: 2rem;
+                border-radius: 20px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            }
+
+            .payment-container h2 {
+                font-size: 1.5rem;
+            }
+
+              /* ============ REGISTRATION PAGE ============ */
+        .register-container {
+            padding: 2rem;
+        }
+
+        .register-container h2 {
+            font-size: 1.6rem;
+        }
+
+        .register-container p {
+            margin-bottom: 2rem;
+        }
+
+            .login-container {
+            padding: 2rem;
+        }
+
+        .login-container h2 {
+            font-size: 1.6rem;
+        }
+
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+
+            .container {
+                padding: 20px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 40px 0;
+            }
+
+            .hero-left h1 {
+                font-size: 2.2rem;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                align-items: flex-start;
+                text-align: left;
+                justify-content: flex-start;
+            }
+
+            #dashboard .dashboard-header>div:last-child {
+                width: 100%;
+                justify-content: space-between;
+                gap: 0.8rem !important;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .success-message {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--success);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @media (max-width: 600px) {
+
+            .logo {
+                gap: 7px;
+                font-size: 1.15rem;
+            }
+
+            .logo-icon img {
+                width: 42px;
+                height: 42px;
+            }
+
+            .logo-desktop-text {
+                display: none !important;
+            }
+
+            .logo-mobile-text {
+                display: inline !important;
+            }
+
+            .navbar-content {
+                padding: 0 15px;
+            }
+
+            .nav-right {
+                gap: 0.7rem;
+            }
+
+            .nav-right a {
+                display: none;
+            }
+
+            .nav-right .btn {
+                padding: 0.65rem 1.1rem;
+                border-radius: 8px;
+                font-size: 0.9rem;
+            }
+
+
+            #landing {
+                padding-top: 70px;
+            }
+
+            .hero {
+                padding: 35px 0 55px;
+            }
+
+            .hero-features {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            .hero-right {
+                min-height: 560px;
+                padding: 2rem 1.4rem;
+
+                border-radius: 22px;
+            }
+
+            .hero-right h2 {
+                font-size: 2.1rem;
+            }
+
+            .price-amount {
+                font-size: 3rem;
+            }
+
+            #dashboard .dashboard-header {
+                padding: 1.3rem;
+                margin-bottom: 1.5rem;
+                border-radius: 12px;
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            #dashboard .dashboard-header h1 {
+                font-size: 1.35rem;
+            }
+
+            #dashboard .dashboard-header p {
+                font-size: 0.8rem;
+            }
+
+            #dashboard .user-info {
+                gap: 0.6rem;
+            }
+
+            #dashboard .user-avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            #dashboard .logout-btn {
+                padding: 0.5rem 0.9rem;
+                border-radius: 8px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-content">
+
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Aceline Logo">
+                </div>
+
+                <span class="logo-desktop-text">Aceline Income Generator</span>
+                <span class="logo-mobile-text">Aceline</span>
+            </div>
+
+            <div class="nav-right" id="navRight">
+                <a href="#" onclick="showPage('landing'); return false;">Home</a>
+
+                <button class="btn btn-primary" onclick="showPage('login'); return false;">
+                    Login
+                </button>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- ============ LANDING PAGE ============ -->
+
+    <div id="landing" class="page active">
+
+        <section class="hero">
+
+            <div class="container">
+
+                <!-- LEFT -->
+                <div class="hero-left">
+
+                    <div class="hero-eyebrow">
+                        <span></span>
+                        Income Generator Blueprint
+                    </div>
+
+                    <h1>
+                        Build a System for
+                        <span class="highlight">Consistent Income.</span>
+                    </h1>
+
+                    <p>
+                        A practical step-by-step blueprint designed to help you
+                        build income systems, create consistent cash flow, and
+                        develop a business you can grow and scale.
+                    </p>
+
+                    <ul class="hero-features">
+                        <li>Step-by-step income strategies</li>
+                        <li>Professional video lessons</li>
+                        <li>Business building frameworks</li>
+                        <li>Practical implementation guides</li>
+                        <li>Learn at your own pace</li>
+                        <li>Certificate upon completion</li>
+                    </ul>
+
+                    <div class="hero-buttons">
+
+                        <button class="btn btn-primary" onclick="showPage('payment'); return false;">
+                            Get the Blueprint
+                        </button>
+
+                        <button class="btn btn-secondary" onclick="showPage('login'); return false;">
+                            Explore the Course
+                        </button>
+
+                    </div>
+
+                    <div class="hero-trust">
+                        <span>✓</span>
+                        <span>
+                            One-time payment •
+                            <strong>Lifetime access</strong>
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT -->
+                <div class="hero-right">
+
+                    <!-- Background image -->
+                    <div class="hero-image"></div>
+                    <!-- Red overlay -->
+                    <div class="hero-overlay"></div>
+
+                    <!-- Content -->
+                    <div class="offer-content">
+
+                        <div class="offer-badge">
+                            LIMITED-TIME ACCESS
+                        </div>
+
+                        <h2>
+                            Start Building
+                            Your Income System.
+                        </h2>
+
+                        <p class="offer-subtitle">
+                            Get the complete Income Generator Blueprint
+                            and learn practical strategies for building
+                            and scaling a sustainable business.
+                        </p>
+
+                        <div class="price-box">
+
+                            <span class="price-label">
+                                GET LIFETIME ACCESS
+                            </span>
+
+                            <div class="price-row">
+                                <span class="price-currency">₦</span>
+                                <span class="price-amount">10,000</span>
+                            </div>
+
+                            <div class="price-desc">
+                                One-time payment • No recurring fees
+                            </div>
+
+                        </div>
+
+                        <button class="btn btn-primary" onclick="showPage('payment'); return false;">
+                            Get Instant Access
+                        </button>
+
+                        <div class="offer-note">
+                            Secure checkout • Lifetime course access
+                        </div>
+
+                    </div>
+
+                </div>
+
+        </section>
+
+    </div>
+
+    </div>
+    <!-- ============ PAYMENT PAGE ============ -->
+    <div id="payment" class="page">
+        <div class="payment-container">
+            <h2>Complete Your Purchase</h2>
+            <p style="color: var(--text-light); margin-bottom: 2rem;">Join 100+ successful learners</p>
+
+            <form id="paymentForm" onsubmit="processPayment(event)">
+                <div class="order-summary">
+                    <div class="summary-row">
+                        <span>Aceline Income Generator</span>
+                        <span>₦10,000</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Lifetime Access</span>
+                        <span>✓</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span> ₦10,000</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="fullName" required placeholder="John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" id="emailPayment" required placeholder="john@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="phone" required placeholder="+91 98765 43210">
+                </div>
+
+                <div class="form-group">
+                    <label>Payment Method *</label>
+                    <select required>
+                        <option value="">Select Payment Method</option>
+                        <option value="card">Credit/Debit Card</option>
+                        <option value="upi">UPI</option>
+                        <option value="wallet">Digital Wallet</option>
+                        <option value="bank">Bank Transfer</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <input type="checkbox" required> I agree to the Terms & Conditions
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    Complete Payment
+                </button>
+            </form>
+
+            <p style="text-align: center; margin-top: 1.5rem; color: var(--text-light); font-size: 0.9rem;">
+                Secure payment powered by industry-leading encryption. Your data is safe with us.
+            </p>
+        </div>
+    </div>
+
+    <!-- ============ REGISTRATION PAGE ============ -->
+    <div id="register" class="page">
+        <div class="register-container">
+            <h2>Create Your Account</h2>
+            <p>Welcome! Let's set up your Aceline account to get started.</p>
+
+            <form id="registerForm" onsubmit="registerUser(event)">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="regFullName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Username *</label>
+                    <input type="text" id="username" required placeholder="Choose a username">
+                </div>
+
+                <div class="form-group">
+                    <label>Password *</label>
+                    <input type="password" id="regPassword" required placeholder="Minimum 8 characters">
+                </div>
+
+                <div class="form-group">
+                    <label>Confirm Password *</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">Create
+                    Account</button>
+            </form>
+
+            <div class="login-footer">
+                Already have an account? <a href="#" onclick="showPage('login'); return false;">Login here</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ LOGIN PAGE ============ -->
+    <div id="login" class="page">
+        <div class="login-container">
+            <h2>Welcome Back</h2>
+
+            <form class="login-form" onsubmit="loginUser(event)">
+                <div class="form-group">
+                    <label>Email or Username *</label>
+                    <input type="text" id="loginEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Password *</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Login to Dashboard</button>
+            </form>
+
+            <div class="login-footer">
+                Don't have an account? <a href="#" onclick="showPage('payment'); return false;">Pay Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ DASHBOARD PAGE ============ -->
+    <div id="dashboard" class="page">
+        <div class="container" style="padding-top: 100px;">
+            <div class="dashboard-header">
+                <div>
+                    <h1>Welcome, <span id="usernameDash">User</span></h1>
+                    <p style="margin-top: 0.5rem; opacity: 0.9;">Continue your learning journey</p>
+                </div>
+                <div style="display: flex; gap: 2rem; align-items: center;">
+                    <div class="user-info">
+                        <div class="user-avatar">👤</div>
+                        <div>
+                            <div style="font-weight: 600;">Profile</div>
+                            <small style="opacity: 0.8;">Member</small>
+                        </div>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h2 style="font-size: 1.8rem; margin-bottom: 1rem;">Your Learning Modules</h2>
+                <p style="color: var(--text-light);">Access all training materials and track your progress</p>
+            </div>
+
+            <div id="modulesContainer" class="modules-grid"></div>
+        </div>
+    </div>
+
+    <script>
+        // Data
+        const modules = [
+            {
+                id: 1,
+                icon: 'fa-solid fa-bullhorn',
+                title: 'Module 1: Information Marketing',
+                description: 'Learn how to create and sell digital products effectively',
+                status: 'In Progress'
+            },
+            {
+                id: 2,
+                icon: 'fa-solid fa-chart-line',
+                title: 'Module 2: Sales Blueprint',
+                description: 'Master high-converting sales strategies and techniques',
+                status: 'Available'
+            },
+            {
+                id: 3,
+                icon: 'fa-solid fa-share-nodes',
+                title: 'Module 3: Social Media Mastery',
+                description: 'Build your brand and grow your audience on social platforms',
+                status: 'Available'
+            },
+            {
+                id: 4,
+                icon: 'fa-solid fa-wallet',
+                title: 'Module 4: Money Management',
+                description: 'Learn to manage and scale your income effectively',
+                status: 'Available'
+            },
+            {
+                id: 5,
+                icon: 'fa-solid fa-rocket',
+                title: 'Module 5: Business Scaling',
+                description: 'Advanced strategies to take your business to the next level',
+                status: 'Coming Soon'
+            }
+        ];
+
+        // Utility Functions
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+
+            // Update navbar
+            updateNavbar(pageId);
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function updateNavbar(pageId) {
+            const navRight = document.getElementById('navRight');
+            if (pageId === 'dashboard') {
+                navRight.innerHTML = `<span style="color: var(--text-light);">Logged in</span>`;
+            } else {
+                navRight.innerHTML = `
+                    <a href="#" onclick="showPage('landing'); return false;">Home</a>
+                    <button class="btn btn-primary" style="padding: 0.7rem 1.5rem;" onclick="showPage('login'); return false;">Login</button>
+                `;
+            }
+        }
+
+        // Payment Processing
+        function processPayment(e) {
+            e.preventDefault();
+
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('emailPayment').value;
+
+            // Simulate payment processing
+            alert('Payment Processing...\n\nIn a real application, this would connect to Razorpay, Stripe, or PayPal.\n\nAfter successful payment, you will be redirected to account creation.');
+
+            // Store payment info and redirect to registration
+            localStorage.setItem('pendingFullName', fullName);
+            localStorage.setItem('pendingEmail', email);
+            localStorage.setItem('paymentComplete', 'true');
+
+            showPage('register');
+        }
+
+        // User Registration
+        function registerUser(e) {
+            e.preventDefault();
+
+            const fullName = document.getElementById('regFullName').value;
+            const email = document.getElementById('regEmail').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            // Store user data
+            const userData = {
+                fullName,
+                email,
+                username,
+                password,
+                createdAt: new Date().toLocaleDateString()
+            };
+
+            localStorage.setItem('user', JSON.stringify(userData));
+
+            alert('Account created successfully! Please login with your credentials.');
+            showPage('login');
+        }
+
+        // User Login
+        function loginUser(e) {
+            e.preventDefault();
+
+            const loginEmail = document.getElementById('loginEmail').value;
+            const loginPassword = document.getElementById('loginPassword').value;
+
+            const userStr = localStorage.getItem('user');
+
+            if (!userStr) {
+                alert('No account found. Please create an account first.');
+                return;
+            }
+
+            const user = JSON.parse(userStr);
+
+            if ((user.email === loginEmail || user.username === loginEmail) && user.password === loginPassword) {
+                localStorage.setItem('loggedIn', 'true');
+                localStorage.setItem('currentUser', user.username);
+
+                // Load dashboard
+                loadDashboard(user.username);
+                showPage('dashboard');
+            } else {
+                alert('Invalid email/username or password!');
+            }
+        }
+
+        // Load Dashboard
+        function loadDashboard(username) {
+            document.getElementById('usernameDash').textContent = username;
+            renderModules();
+        }
+
+        // Render Modules
+        function renderModules() {
+            const container = document.getElementById('modulesContainer');
+
+            if (modules.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1/-1;">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📦</div>
+                            <h3>No Modules Available</h3>
+                            <p>Your learning modules will appear here soon. Check back later!</p>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = modules.map(module => `
+                <div class="module-card">
+                    <div class="module-icon">
+    <i class="${module.icon}"></i>
+</div>
+                    <h3>${module.title}</h3>
+                    <p>${module.description}</p>
+                    <div class="module-status ${module.status.toLowerCase().replace(' ', '-')}">
+                        ${module.status}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Logout
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('loggedIn');
+                localStorage.removeItem('currentUser');
+                showPage('landing');
+            }
+        }
+
+        // Check if user is logged in on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+            if (isLoggedIn) {
+                const username = localStorage.getItem('currentUser');
+                loadDashboard(username);
+                showPage('dashboard');
+            }
+        });
+    </script>
+</body>
+
+</html>
