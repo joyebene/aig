@@ -9,101 +9,230 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap"
         rel="stylesheet">
+
     <style>
+        /* =========================================================
+   ACELINE — INCOME GENERATOR BLUEPRINT
+   COMPLETE LANDING PAGE CSS
+========================================================= */
+
+        /* =========================
+   RESET
+========================= */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         :root {
             --primary: #E31B23;
             --primary-dark: #c4171e;
-            --dark-bg: #050505;
-            --light-bg: #f9fafb;
-            --text-dark: #1a1a1a;
-            --text-light: #666666;
-            --accent: #22D3EE;
-            --gold: #FBBF24;
+            --primary-light: #fff1f2;
+
+            --dark-bg: #080808;
+            --dark-section: #0d0d0d;
+
+            --light-bg: #f7f7f8;
+            --white: #ffffff;
+
+            --text-dark: #151515;
+            --text-medium: #3f3f3f;
+            --text-light: #6b6b6b;
+            --text-muted: #888888;
+
+            --border: #e8e8e8;
             --success: #10b981;
+            --gold: #FBBF24;
+
+            --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 12px 35px rgba(0, 0, 0, 0.09);
+            --shadow-lg: 0 25px 70px rgba(0, 0, 0, 0.13);
+
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 30px;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, Helvetica, Arial, sans-serif;
+
+            background: #ffffff;
             color: var(--text-dark);
+
             line-height: 1.6;
             overflow-x: hidden;
+
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
 
-        /* ============ SHARED STYLES ============ */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
         }
+
+        button {
+            cursor: pointer;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+
+        /* =========================================================
+   SHARED
+========================================================= */
+
+        .container {
+            width: min(1200px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.45s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* =========================================================
+   BUTTONS
+========================================================= */
 
         .btn {
-            padding: 0.8rem 1.5rem;
+            min-height: 50px;
+
+            padding: 0 1.4rem;
+
             border: none;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 1rem;
+            border-radius: 11px;
+
+            font-size: 0.95rem;
+            font-weight: 750;
+
             text-decoration: none;
-            display: inline-block;
-            text-align: center;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease,
+                border-color 0.25s ease;
+
+            white-space: nowrap;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), #ff4444);
+            background: linear-gradient(135deg,
+                    var(--primary),
+                    #ff4148);
+
             color: white;
-            box-shadow: 0 4px 15px rgba(227, 27, 35, 0.3);
+
+            box-shadow:
+                0 8px 24px rgba(227, 27, 35, 0.25);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(227, 27, 35, 0.4);
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 14px 32px rgba(227, 27, 35, 0.32);
         }
 
         .btn-secondary {
-            background: transparent;
+            background: white;
+
             color: var(--primary);
-            border: 2px solid var(--primary);
+
+            border: 1.5px solid var(--primary);
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
         }
 
         .btn-secondary:hover {
-            background: rgba(227, 27, 35, 0.1);
+            background: var(--primary-light);
+
+            transform: translateY(-2px);
         }
 
-        /* ============ NAVBAR ============ */
+
+        /* =========================================================
+   NAVBAR
+========================================================= */
+
         .navbar {
             position: fixed;
+
             top: 0;
+            left: 0;
+
             width: 100%;
+
             z-index: 1000;
-            background: white;
-            border-bottom: 1px solid #e0e0e0;
-            padding: 1rem 0;
+
+            background: rgba(255, 255, 255, 0.94);
+
+            border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+
+            padding: 0.8rem 0;
         }
 
         .navbar-content {
+            width: min(1200px, calc(100% - 40px));
+
+            margin: 0 auto;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
         }
 
         .logo {
             display: flex;
             align-items: center;
+
             gap: 10px;
-            font-size: 1.3rem;
-            font-weight: 700;
+
+            font-size: 1.25rem;
+            font-weight: 800;
+
             color: var(--primary);
+
             line-height: 1;
         }
 
@@ -111,17 +240,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
+
             flex-shrink: 0;
         }
 
         .logo-icon img {
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
+
             object-fit: contain;
+
             display: block;
         }
 
-        /* Desktop */
         .logo-desktop-text {
             display: inline;
         }
@@ -132,72 +263,60 @@
 
         .nav-right {
             display: flex;
-            gap: 1.5rem;
             align-items: center;
+
+            gap: 1.4rem;
         }
 
         .nav-right a {
             color: var(--text-light);
+
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+
+            font-size: 0.92rem;
+            font-weight: 600;
+
+            transition: color 0.25s ease;
         }
 
         .nav-right a:hover {
             color: var(--primary);
         }
 
-        /* ============ PAGE SECTIONS ============ */
-        .page {
-            display: none;
-            animation: fadeIn 0.5s ease-in;
-        }
 
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* ============ LANDING PAGE ============ */
+        /* =========================================================
+   LANDING
+========================================================= */
 
         #landing {
-            padding-top: 80px;
+            padding-top: 72px;
+
             position: relative;
             overflow: hidden;
         }
 
 
-        /* ==================================================
-   FULL-WIDTH HERO
-================================================== */
+        /* =========================================================
+   HERO
+========================================================= */
 
         .hero {
             position: relative;
 
-            min-height: calc(100vh - 80px);
+            min-height: calc(100vh - 72px);
 
-            padding: 70px 0 90px;
+            padding: 75px 0 90px;
 
             display: flex;
             align-items: center;
 
             overflow: hidden;
 
-            /* FULL SCREEN BACKGROUND */
             background-image:
                 linear-gradient(90deg,
-                    rgba(250, 250, 250, 0.96) 0%,
-                    rgba(250, 250, 250, 0.90) 32%,
-                    rgba(250, 250, 250, 0.62) 60%,
+                    rgba(250, 250, 250, 0.98) 0%,
+                    rgba(250, 250, 250, 0.94) 30%,
+                    rgba(250, 250, 250, 0.70) 57%,
                     rgba(250, 250, 250, 0.20) 100%),
                 url("hero-img1.jpg");
 
@@ -206,27 +325,23 @@
             background-repeat: no-repeat;
         }
 
-
-        /* ==================================================
-   CONTENT CONTAINER
-================================================== */
-
-
         .hero .container {
-            width: 100%;
-            max-width: 1240px;
+            width: min(1240px, calc(100% - 40px));
 
             display: grid;
-            grid-template-columns: minmax(0, 1.15fr) minmax(380px, 0.85fr);
 
-            gap: 4rem;
+            grid-template-columns:
+                minmax(0, 1.08fr) minmax(380px, 0.92fr);
+
+            gap: 4.5rem;
 
             align-items: center;
         }
 
-        /* ==================================================
-   DECORATIVE GLOW
-================================================== */
+
+        /* =========================================================
+   HERO DECORATIONS
+========================================================= */
 
         .hero::before {
             content: "";
@@ -236,36 +351,8 @@
             width: 600px;
             height: 600px;
 
-            left: -300px;
-            top: -200px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(circle,
-                    rgba(227, 27, 35, 0.13),
-                    transparent 70%);
-
-            filter: blur(30px);
-
-            pointer-events: none;
-        }
-
-
-        /* ==================================================
-   SECOND GLOW
-================================================== */
-
-        .hero::after {
-            content: "";
-
-            position: absolute;
-
-            width: 500px;
-            height: 500px;
-
-            right: -250px;
-            bottom: -250px;
+            left: -330px;
+            top: -220px;
 
             border-radius: 50%;
 
@@ -279,10 +366,28 @@
             pointer-events: none;
         }
 
+        .hero::after {
+            content: "";
 
-        /* =========================
-   CONTENT LAYERS
-========================= */
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            right: -260px;
+            bottom: -260px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle,
+                    rgba(227, 27, 35, 0.13),
+                    transparent 70%);
+
+            filter: blur(30px);
+
+            pointer-events: none;
+        }
 
         .hero-left,
         .hero-right {
@@ -291,42 +396,42 @@
         }
 
 
-        /* =========================
-   LEFT SIDE
-========================= */
+        /* =========================================================
+   HERO LEFT
+========================================================= */
 
         .hero-left {
-            max-width: 720px;
+            max-width: 700px;
         }
-
-
-        /* =========================
-   EYEBROW
-========================= */
 
         .hero-eyebrow {
             display: inline-flex;
+
             align-items: center;
             gap: 8px;
 
             padding: 7px 13px;
-            margin-bottom: 1.4rem;
 
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.35rem;
+
+            border:
+                1px solid rgba(227, 27, 35, 0.15);
+
             border-radius: 100px;
 
-            background: rgba(255, 255, 255, 0.85);
-
-            -webkit-backdrop-filter: blur(10px);
+            background:
+                rgba(255, 255, 255, 0.82);
 
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
 
             color: var(--primary);
 
-            font-size: 0.78rem;
+            font-size: 0.72rem;
             font-weight: 800;
 
             letter-spacing: 0.08em;
+
             text-transform: uppercase;
         }
 
@@ -337,25 +442,23 @@
             background: var(--primary);
 
             border-radius: 50%;
+
+            box-shadow:
+                0 0 0 4px rgba(227, 27, 35, 0.08);
         }
-
-
-        /* =========================
-   HEADLINE
-========================= */
 
         .hero-left h1 {
             max-width: 720px;
 
-            margin: 0 0 1.4rem;
+            margin-bottom: 1.4rem;
 
-            font-size: clamp(2.8rem, 5vw, 4.8rem);
+            font-size: clamp(2.8rem, 5vw, 5rem);
 
-            font-weight: 800;
+            font-weight: 850;
 
-            line-height: 1.05;
+            line-height: 1.02;
 
-            letter-spacing: -0.045em;
+            letter-spacing: -0.055em;
 
             color: var(--text-dark);
         }
@@ -364,85 +467,80 @@
             color: var(--primary);
         }
 
-
-        /* =========================
-   DESCRIPTION
-========================= */
-
         .hero-left>p {
-            max-width: 620px;
+            max-width: 650px;
 
             margin-bottom: 1.8rem;
 
             color: #555;
 
-            font-size: 1.08rem;
+            font-size: 1.05rem;
 
             line-height: 1.75;
         }
 
 
-        /* =========================
-   FEATURES
-========================= */
+        /* =========================================================
+   HERO FEATURES
+========================================================= */
 
         .hero-features {
             display: grid;
 
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
 
-            gap: 0.8rem 2rem;
+            gap: 0.8rem 1.8rem;
 
-            max-width: 650px;
+            max-width: 680px;
 
             padding: 0;
-            margin: 0 0 2.2rem;
+            margin: 0 0 2rem;
 
             list-style: none;
         }
 
         .hero-features li {
             display: flex;
-            align-items: center;
-            gap: 10px;
 
-            margin: 0;
+            align-items: center;
+
+            gap: 9px;
 
             color: #303030;
 
-            font-size: 0.94rem;
+            font-size: 0.9rem;
 
-            font-weight: 600;
+            font-weight: 650;
         }
 
         .hero-features li::before {
             content: "✓";
 
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            flex: 0 0 22px;
-
             width: 22px;
             height: 22px;
 
+            flex: 0 0 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             border-radius: 50%;
 
-            background: rgba(255, 68, 68, 0.1);
+            background:
+                rgba(227, 27, 35, 0.09);
 
             color: var(--primary);
 
-            font-size: 0.75rem;
-
+            font-size: 0.72rem;
             font-weight: 900;
         }
 
 
-        /* =========================
-   BUTTONS
-========================= */
+        /* =========================================================
+   HERO BUTTONS
+========================================================= */
 
         .hero-buttons {
             display: flex;
@@ -455,32 +553,38 @@
         }
 
         .hero-buttons .btn {
-            min-height: 50px;
-
-            padding: 0 1.4rem;
-
-            border-radius: 10px;
-
-            font-weight: 700;
+            min-height: 52px;
         }
-
-
-        /* =========================
-   TRUST
-========================= */
 
         .hero-trust {
             display: flex;
 
             align-items: center;
 
-            gap: 10px;
+            gap: 9px;
 
-            margin-top: 1.4rem;
+            margin-top: 1.25rem;
 
             color: #777;
 
             font-size: 0.78rem;
+        }
+
+        .hero-trust>span:first-child {
+            width: 20px;
+            height: 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(16, 185, 129, 0.1);
+
+            color: var(--success);
+
+            font-weight: 900;
         }
 
         .hero-trust strong {
@@ -488,18 +592,16 @@
         }
 
 
-        /* ==================================================
-   RIGHT OFFER CARD
-================================================== */
+        /* =========================================================
+   HERO RIGHT OFFER CARD
+========================================================= */
 
         .hero-right {
-            position: relative;
-
-            min-height: 520px;
+            min-height: 540px;
 
             padding: 3rem;
 
-            border-radius: 28px;
+            border-radius: var(--radius-xl);
 
             overflow: hidden;
 
@@ -508,17 +610,11 @@
             display: flex;
 
             align-items: center;
-
             justify-content: center;
 
             box-shadow:
-                0 25px 60px rgba(0, 0, 0, 0.20);
+                0 30px 80px rgba(0, 0, 0, 0.22);
         }
-
-
-        /* =========================
-   CARD IMAGE
-========================= */
 
         .hero-image {
             position: absolute;
@@ -531,15 +627,10 @@
 
             background-position: center;
 
-            transform: scale(1.02);
+            transform: scale(1.03);
 
             z-index: 0;
         }
-
-
-        /* =========================
-   CARD RED OVERLAY
-========================= */
 
         .hero-overlay {
             position: absolute;
@@ -548,8 +639,8 @@
 
             background:
                 linear-gradient(135deg,
-                    rgba(190, 25, 25, 0.55),
-                    rgba(220, 45, 45, 0.68));
+                    rgba(155, 20, 20, 0.70),
+                    rgba(225, 36, 43, 0.78));
 
             z-index: 1;
         }
@@ -563,14 +654,9 @@
 
             background:
                 linear-gradient(90deg,
-                    rgba(0, 0, 0, 0.35),
+                    rgba(0, 0, 0, 0.38),
                     transparent 80%);
         }
-
-
-        /* =========================
-   OFFER CONTENT
-========================= */
 
         .offer-content {
             position: relative;
@@ -589,64 +675,69 @@
 
             padding: 7px 12px;
 
-            margin-bottom: 1.4rem;
+            margin-bottom: 1.3rem;
 
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border:
+                1px solid rgba(255, 255, 255, 0.30);
 
             border-radius: 100px;
 
-            background: rgba(255, 255, 255, 0.12);
+            background:
+                rgba(255, 255, 255, 0.13);
 
             backdrop-filter: blur(10px);
 
-            font-size: 0.7rem;
+            font-size: 0.68rem;
 
             font-weight: 800;
 
-            letter-spacing: 0.08em;
+            letter-spacing: 0.09em;
         }
 
         .hero-right h2 {
             max-width: 400px;
 
-            margin: 0 0 1rem;
+            margin-bottom: 1rem;
 
-            font-size: 2.6rem;
+            font-size: 2.65rem;
 
-            line-height: 1.08;
+            line-height: 1.05;
 
-            letter-spacing: -0.04em;
+            letter-spacing: -0.045em;
 
-            font-weight: 800;
+            font-weight: 850;
         }
 
         .offer-subtitle {
-            max-width: 390px;
+            max-width: 400px;
 
-            margin: 0 0 1.5rem;
+            margin-bottom: 1.5rem;
 
-            color: rgba(255, 255, 255, 0.88);
+            color:
+                rgba(255, 255, 255, 0.88);
 
-            font-size: 0.98rem;
+            font-size: 0.96rem;
 
             line-height: 1.65;
         }
 
 
-        /* =========================
-   PRICE BOX
-========================= */
+        /* =========================================================
+   PRICE
+========================================================= */
 
         .price-box {
             padding: 1.2rem 1.3rem;
 
-            margin-bottom: 1.1rem;
+            margin-bottom: 1rem;
 
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border:
+                1px solid rgba(255, 255, 255, 0.20);
 
             border-radius: 16px;
 
-            background: rgba(0, 0, 0, 0.18);
+            background:
+                rgba(0, 0, 0, 0.20);
 
             backdrop-filter: blur(12px);
         }
@@ -656,9 +747,10 @@
 
             margin-bottom: 0.4rem;
 
-            color: rgba(255, 255, 255, 0.7);
+            color:
+                rgba(255, 255, 255, 0.68);
 
-            font-size: 0.7rem;
+            font-size: 0.68rem;
 
             font-weight: 800;
 
@@ -672,13 +764,13 @@
         }
 
         .price-currency {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
 
             font-weight: 700;
         }
 
         .price-amount {
-            font-size: 3.4rem;
+            font-size: 3.35rem;
 
             font-weight: 900;
 
@@ -690,133 +782,994 @@
         .price-desc {
             margin-top: 0.5rem;
 
-            color: rgba(255, 255, 255, 0.7);
+            color:
+                rgba(255, 255, 255, 0.68);
 
-            font-size: 0.75rem;
+            font-size: 0.73rem;
         }
-
-
-        /* =========================
-   OFFER BUTTON
-========================= */
 
         .hero-right .btn-primary {
             width: 100%;
 
             min-height: 55px;
 
-            border: none;
-
-            border-radius: 11px;
-
             background: white;
 
             color: var(--primary);
 
-            font-size: 0.95rem;
-
-            font-weight: 800;
-
-            cursor: pointer;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 10px;
-
-            transition: all 0.2s ease;
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.16);
         }
 
         .hero-right .btn-primary:hover {
-            transform: translateY(-2px);
+            background: #fff;
+
+            transform: translateY(-3px);
 
             box-shadow:
-                0 12px 30px rgba(0, 0, 0, 0.25);
+                0 15px 35px rgba(0, 0, 0, 0.25);
         }
 
-
-        /* =========================
-   OFFER NOTE
-========================= */
-
         .offer-note {
-            margin-top: 0.9rem;
+            margin-top: 0.85rem;
 
             text-align: center;
 
-            color: rgba(255, 255, 255, 0.72);
+            color:
+                rgba(255, 255, 255, 0.70);
+
+            font-size: 0.7rem;
+        }
+
+
+        /* =========================================================
+   GENERAL SECTION STYLES
+========================================================= */
+
+        .problem-section,
+        .solution-section,
+        .modules-section,
+        .proof-section,
+        .offer-section,
+        .faq-section {
+            padding: 100px 0;
+        }
+
+        .problem-section {
+            background: #ffffff;
+        }
+
+        .solution-section {
+            background: var(--light-bg);
+
+            text-align: center;
+        }
+
+        .modules-section {
+            background: #ffffff;
+        }
+
+        .proof-section {
+            background: var(--dark-bg);
+
+            color: white;
+        }
+
+        .offer-section {
+            background: var(--light-bg);
+        }
+
+        .faq-section {
+            background: white;
+        }
+
+        .section-eyebrow {
+            display: inline-flex;
+
+            align-items: center;
+
+            margin-bottom: 1rem;
+
+            color: var(--primary);
+
+            font-size: 0.72rem;
+
+            font-weight: 850;
+
+            letter-spacing: 0.13em;
+
+            text-transform: uppercase;
+        }
+
+        .section-eyebrow::before {
+            content: "";
+
+            width: 22px;
+            height: 2px;
+
+            margin-right: 8px;
+
+            background: var(--primary);
+
+            border-radius: 10px;
+        }
+
+        .problem-section h2,
+        .solution-section h2,
+        .modules-section h2,
+        .proof-section h2,
+        .faq-section h2 {
+            max-width: 850px;
+
+            margin-bottom: 1rem;
+
+            font-size: clamp(2.1rem, 4vw, 3.6rem);
+
+            line-height: 1.08;
+
+            letter-spacing: -0.045em;
+
+            font-weight: 850;
+        }
+
+        .solution-section h2 {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        .section-intro {
+            max-width: 700px;
+
+            margin-bottom: 3rem;
+
+            color: var(--text-light);
+
+            font-size: 1rem;
+
+            line-height: 1.75;
+        }
+
+        .solution-section .section-intro {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        /* =========================================================
+   PROBLEM SECTION
+========================================================= */
+
+        .problem-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 1.2rem;
+
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            padding: 1.7rem;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: var(--radius-md);
+
+            background: white;
+
+            box-shadow: var(--shadow-sm);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+
+            border-color:
+                rgba(227, 27, 35, 0.25);
+
+            box-shadow: var(--shadow-md);
+        }
+
+        .problem-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 1.1rem;
+
+            border-radius: 12px;
+
+            background:
+                rgba(227, 27, 35, 0.08);
+
+            color: var(--primary);
+
+            font-size: 1.4rem;
+
+            font-weight: 700;
+        }
+
+        .problem-card h3 {
+            margin-bottom: 0.55rem;
+
+            font-size: 1.05rem;
+
+            line-height: 1.3;
+        }
+
+        .problem-card p {
+            color: var(--text-light);
+
+            font-size: 0.88rem;
+
+            line-height: 1.65;
+        }
+
+
+        /* =========================================================
+   MODULES
+========================================================= */
+
+        .modules-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 1.25rem;
+
+            margin-top: 2.5rem;
+
+            margin-bottom: 3rem;
+        }
+
+        .module-card {
+            position: relative;
+
+            padding: 2rem;
+
+            min-height: 230px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: var(--radius-md);
+
+            background: white;
+
+            box-shadow: var(--shadow-sm);
+
+            overflow: hidden;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .module-card::after {
+            content: "";
+
+            position: absolute;
+
+            right: -50px;
+            bottom: -50px;
+
+            width: 140px;
+            height: 140px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(227, 27, 35, 0.04);
+
+            pointer-events: none;
+        }
+
+        .module-card:hover {
+            transform: translateY(-6px);
+
+            border-color:
+                rgba(227, 27, 35, 0.25);
+
+            box-shadow: var(--shadow-md);
+        }
+
+        .module-number {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 42px;
+            height: 42px;
+
+            margin-bottom: 1.2rem;
+
+            border-radius: 11px;
+
+            background: var(--primary);
+
+            color: white;
+
+            font-size: 0.8rem;
+
+            font-weight: 850;
+
+            letter-spacing: 0.04em;
+        }
+
+        .module-card h3 {
+            max-width: 330px;
+
+            margin-bottom: 0.65rem;
+
+            font-size: 1.12rem;
+
+            line-height: 1.35;
+
+            font-weight: 750;
+        }
+
+        .module-card p {
+            color: var(--text-light);
+
+            font-size: 0.88rem;
+
+            line-height: 1.65;
+        }
+
+
+        /* =========================================================
+   PROOF SECTION
+========================================================= */
+
+        .proof-section {
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .proof-section::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            top: -250px;
+            right: -200px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle,
+                    rgba(227, 27, 35, 0.22),
+                    transparent 70%);
+
+            filter: blur(30px);
+
+            pointer-events: none;
+        }
+
+        .proof-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .proof-section h2 {
+            color: white;
+        }
+
+        .proof-section .section-intro {
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .proof-stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 1rem;
+
+            margin: 3rem 0;
+        }
+
+        .proof-card {
+            padding: 1.5rem;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.10);
+
+            border-radius: 16px;
+
+            background:
+                rgba(255, 255, 255, 0.055);
+
+            backdrop-filter: blur(10px);
+        }
+
+        .proof-card span {
+            display: block;
+
+            margin-bottom: 0.6rem;
+
+            color:
+                rgba(255, 255, 255, 0.60);
+
+            font-size: 0.72rem;
+
+            font-weight: 650;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.04em;
+        }
+
+        .proof-card strong {
+            display: block;
+
+            margin-bottom: 0.3rem;
+
+            color: white;
+
+            font-size: 1.8rem;
+
+            line-height: 1.1;
+        }
+
+        .proof-card small {
+            color:
+                rgba(255, 255, 255, 0.48);
 
             font-size: 0.72rem;
         }
 
 
+        /* =========================================================
+   TESTIMONIALS
+========================================================= */
+
+        .student-results {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 1.2rem;
+        }
+
+        .testimonial-card {
+            padding: 1.7rem;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.10);
+
+            border-radius: 18px;
+
+            background:
+                rgba(255, 255, 255, 0.045);
+        }
+
+        .testimonial-card p {
+            margin-bottom: 1.4rem;
+
+            color:
+                rgba(255, 255, 255, 0.88);
+
+            font-size: 0.94rem;
+
+            line-height: 1.7;
+        }
+
+        .testimonial-card strong {
+            display: block;
+
+            color: white;
+
+            font-size: 0.88rem;
+        }
+
+        .testimonial-card span {
+            display: block;
+
+            margin-top: 2px;
+
+            color:
+                rgba(255, 255, 255, 0.48);
+
+            font-size: 0.75rem;
+        }
 
 
-        /* ============ PAYMENT PAGE ============ */
-        .payment-container {
+        /* =========================================================
+   OFFER SECTION
+========================================================= */
+
+        .offer-card {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.25fr) minmax(300px, 0.75fr);
+
+            gap: 3rem;
+
+            align-items: center;
+
+            padding: 3.5rem;
+
+            border-radius: var(--radius-xl);
+
+            background:
+                linear-gradient(135deg,
+                    #111111,
+                    #1c1c1c);
+
+            color: white;
+
+            box-shadow: var(--shadow-lg);
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .offer-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            right: -220px;
+            top: -220px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle,
+                    rgba(227, 27, 35, 0.30),
+                    transparent 70%);
+        }
+
+        .offer-card-content,
+        .offer-price {
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .offer-card-content h2 {
+            max-width: 650px;
+
+            margin-bottom: 1rem;
+
+            font-size: clamp(2rem, 4vw, 3.2rem);
+
+            line-height: 1.08;
+
+            letter-spacing: -0.04em;
+        }
+
+        .offer-card-content>p {
             max-width: 600px;
-            margin: 100px auto;
-            background: white;
-            padding: 3rem;
+
+            margin-bottom: 1.6rem;
+
+            color:
+                rgba(255, 255, 255, 0.68);
+
+            font-size: 0.95rem;
+
+            line-height: 1.7;
+        }
+
+        .offer-list {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 0.75rem;
+
+            list-style: none;
+        }
+
+        .offer-list li {
+            color:
+                rgba(255, 255, 255, 0.88);
+
+            font-size: 0.86rem;
+        }
+
+
+        /* =========================================================
+   OFFER PRICE
+========================================================= */
+
+        .offer-price {
+            padding: 2rem;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.12);
+
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+
+            background:
+                rgba(255, 255, 255, 0.06);
+
+            text-align: center;
+
+            backdrop-filter: blur(10px);
+        }
+
+        .offer-price>span {
+            display: block;
+
+            margin-bottom: 1rem;
+
+            color:
+                rgba(255, 255, 255, 0.55);
+
+            font-size: 0.7rem;
+
+            font-weight: 800;
+
+            letter-spacing: 0.08em;
+        }
+
+        .old-price {
+            color:
+                rgba(255, 255, 255, 0.4);
+
+            font-size: 1rem;
+
+            text-decoration: line-through;
+        }
+
+        .current-price {
+            margin: 0.1rem 0;
+
+            color: white;
+
+            font-size: clamp(3rem, 5vw, 4.2rem);
+
+            font-weight: 900;
+
+            line-height: 1;
+
+            letter-spacing: -0.06em;
+        }
+
+        .offer-price p {
+            margin: 0.7rem 0 1.3rem;
+
+            color:
+                rgba(255, 255, 255, 0.55);
+
+            font-size: 0.76rem;
+        }
+
+        .offer-price .btn {
+            width: 100%;
+        }
+
+        .offer-price small {
+            display: block;
+
+            margin-top: 0.75rem;
+
+            color:
+                rgba(255, 255, 255, 0.45);
+
+            font-size: 0.68rem;
+        }
+
+
+        /* =========================================================
+   FAQ
+========================================================= */
+
+        .faq-section .container {
+            max-width: 900px;
+        }
+
+        .faq-list {
+            margin-top: 2.5rem;
+
+            border-top:
+                1px solid var(--border);
+        }
+
+        .faq-item {
+            padding: 1.5rem 0;
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+        .faq-item h3 {
+            margin-bottom: 0.55rem;
+
+            color: var(--text-dark);
+
+            font-size: 1rem;
+
+            font-weight: 750;
+        }
+
+        .faq-item p {
+            max-width: 760px;
+
+            color: var(--text-light);
+
+            font-size: 0.9rem;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+   FINAL CTA
+========================================================= */
+
+        .final-cta {
+            padding: 110px 0;
+
+            background:
+                linear-gradient(135deg,
+                    var(--primary),
+                    #b9141b);
+
+            color: white;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            left: -220px;
+            top: -280px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 255, 255, 0.07);
+        }
+
+        .final-cta::after {
+            content: "";
+
+            position: absolute;
+
+            width: 400px;
+            height: 400px;
+
+            right: -180px;
+            bottom: -240px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(0, 0, 0, 0.10);
+        }
+
+        .final-cta .container {
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .final-cta .section-eyebrow {
+            color: rgba(255, 255, 255, 0.75);
+
+            justify-content: center;
+        }
+
+        .final-cta .section-eyebrow::before {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .final-cta h2 {
+            max-width: 800px;
+
+            margin: 0 auto 1rem;
+
+            font-size: clamp(2.3rem, 5vw, 4rem);
+
+            line-height: 1.05;
+
+            letter-spacing: -0.05em;
+        }
+
+        .final-cta p {
+            max-width: 600px;
+
+            margin: 0 auto 2rem;
+
+            color:
+                rgba(255, 255, 255, 0.82);
+
+            font-size: 1rem;
+
+            line-height: 1.7;
+        }
+
+        .final-cta .btn-primary {
+            background: white;
+
+            color: var(--primary);
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .final-cta .btn-primary:hover {
+            background: #fff;
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+
+        /* =========================================================
+   FOOTER
+========================================================= */
+
+        footer {
+            padding: 2rem 0;
+
+            background: #080808;
+
+            color:
+                rgba(255, 255, 255, 0.55);
+        }
+
+        footer .container {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 1rem;
+        }
+
+        footer p {
+            font-size: 0.75rem;
+        }
+
+
+        /* =========================================================
+   PAYMENT PAGE
+========================================================= */
+
+        .payment-container {
+            width: min(600px, calc(100% - 40px));
+
+            margin: 100px auto;
+
+            padding: 3rem;
+
+            background: white;
+
+            border-radius: 20px;
+
+            box-shadow: var(--shadow-lg);
         }
 
         .payment-container h2 {
-            font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: var(--text-dark);
+
+            font-size: 2rem;
+
+            line-height: 1.2;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.4rem;
         }
 
         .form-group label {
             display: block;
+
             margin-bottom: 0.5rem;
-            font-weight: 600;
+
             color: var(--text-dark);
+
+            font-size: 0.9rem;
+
+            font-weight: 650;
         }
 
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 0.9rem;
-            border: 2px solid #e0e0e0;
+
+            padding: 0.9rem 1rem;
+
+            border: 1.5px solid #ddd;
+
             border-radius: 10px;
+
+            background: white;
+
+            color: var(--text-dark);
+
             font-size: 1rem;
-            transition: border-color 0.3s;
+
+            transition:
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
         }
 
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
+
             border-color: var(--primary);
+
+            box-shadow:
+                0 0 0 4px rgba(227, 27, 35, 0.08);
         }
 
         .order-summary {
-            background: var(--light-bg);
             padding: 1.5rem;
-            border-radius: 10px;
+
             margin-bottom: 1.5rem;
+
+            border-radius: 12px;
+
+            background: var(--light-bg);
         }
 
         .summary-row {
             display: flex;
+
             justify-content: space-between;
-            margin-bottom: 0.8rem;
+
+            gap: 1rem;
+
+            margin-bottom: 0.75rem;
         }
 
         .summary-row.total {
-            font-weight: 700;
-            font-size: 1.1rem;
-            border-top: 2px solid #ddd;
             padding-top: 1rem;
+
+            border-top: 1px solid #ddd;
+
             color: var(--primary);
+
+            font-size: 1.1rem;
+
+            font-weight: 750;
         }
 
         .payment-form {
@@ -825,331 +1778,402 @@
 
         .payment-form .btn-primary {
             width: 100%;
-            padding: 1.2rem;
-            font-size: 1.1rem;
+
+            min-height: 55px;
+
+            font-size: 1rem;
         }
 
-        /* ============ REGISTRATION PAGE ============ */
+
+        /* =========================================================
+   REGISTER
+========================================================= */
+
         .register-container {
-            max-width: 600px;
+            width: min(600px, calc(100% - 40px));
+
             margin: 100px auto;
-            background: white;
+
             padding: 3rem;
+
+            background: white;
+
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+
+            box-shadow: var(--shadow-lg);
         }
 
         .register-container h2 {
-            font-size: 2rem;
             margin-bottom: 0.5rem;
-            color: var(--text-dark);
+
+            font-size: 2rem;
         }
 
         .register-container p {
-            color: var(--text-light);
             margin-bottom: 2rem;
+
+            color: var(--text-light);
         }
 
-        /* ============ LOGIN PAGE ============ */
+
+        /* =========================================================
+   LOGIN
+========================================================= */
+
         .login-container {
-            max-width: 500px;
+            width: min(500px, calc(100% - 40px));
+
             margin: 100px auto;
-            background: white;
+
             padding: 3rem;
+
+            background: white;
+
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+
+            box-shadow: var(--shadow-lg);
         }
 
         .login-container h2 {
-            font-size: 2rem;
             margin-bottom: 2rem;
-            color: var(--text-dark);
+
+            font-size: 2rem;
         }
 
         .login-form .btn-primary {
             width: 100%;
-            padding: 1rem;
+
+            min-height: 52px;
         }
 
         .login-footer {
-            text-align: center;
             margin-top: 1.5rem;
+
+            text-align: center;
         }
 
         .login-footer a {
             color: var(--primary);
+
             text-decoration: none;
-            font-weight: 600;
+
+            font-weight: 650;
         }
 
-        /* ============ DASHBOARD ============ */
+
+        /* =========================================================
+   DASHBOARD
+========================================================= */
+
         .dashboard-header {
-            background: linear-gradient(135deg, var(--primary), #ff4444);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
             display: flex;
-            justify-content: space-between;
+
             align-items: center;
+
+            justify-content: space-between;
+
+            gap: 1.5rem;
+
+            padding: 2rem;
+
+            margin-bottom: 2rem;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(135deg,
+                    var(--primary),
+                    #ff4444);
+
+            color: white;
         }
 
         .dashboard-header h1 {
+            margin-bottom: 0.2rem;
+
             font-size: 2rem;
         }
 
         .user-info {
             display: flex;
+
             align-items: center;
+
             gap: 1rem;
         }
 
         .user-avatar {
             width: 50px;
             height: 50px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 255, 255, 0.20);
+
+            font-size: 1.3rem;
         }
 
         .logout-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 1px solid white;
-            padding: 0.6rem 1.5rem;
+            padding: 0.6rem 1.3rem;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.7);
+
             border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
+
+            background:
+                rgba(255, 255, 255, 0.12);
+
+            color: white;
+
+            transition: background 0.25s ease;
         }
 
         .logout-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background:
+                rgba(255, 255, 255, 0.22);
         }
 
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
 
-        .module-card {
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 15px;
-            padding: 2rem;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .module-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(227, 27, 35, 0.15);
-            transform: translateY(-5px);
-        }
-
-        .module-icon {
-            width: 52px;
-            height: 52px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            margin-bottom: 1.2rem;
-
-            border-radius: 12px;
-
-            background: rgba(227, 27, 35, 0.08);
-
-            color: var(--primary);
-
-            font-size: 1.35rem;
-        }
-
-        .module-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        .module-card p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
+        /* =========================================================
+   DASHBOARD MODULES
+========================================================= */
 
         .module-status {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            background: var(--light-bg);
-            color: var(--primary);
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 0.4rem 0.9rem;
+
             border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
+
+            background: var(--light-bg);
+
+            color: var(--primary);
+
+            font-size: 0.78rem;
+
+            font-weight: 650;
         }
 
         .module-status.completed {
-            background: rgba(16, 185, 129, 0.1);
+            background:
+                rgba(16, 185, 129, 0.1);
+
             color: var(--success);
         }
 
         .empty-state {
-            text-align: center;
             padding: 4rem 2rem;
-            background: var(--light-bg);
+
             border-radius: 15px;
+
+            background: var(--light-bg);
+
+            text-align: center;
         }
 
         .empty-state-icon {
-            font-size: 4rem;
             margin-bottom: 1rem;
+
+            font-size: 4rem;
         }
 
         .empty-state h3 {
-            font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            color: var(--text-dark);
+
+            font-size: 1.5rem;
         }
 
         .empty-state p {
-            color: var(--text-light);
             margin-bottom: 2rem;
+
+            color: var(--text-light);
         }
 
 
-        /* =========================
-   MOBILE
-========================= */
+        /* =========================================================
+   SUCCESS MESSAGE
+========================================================= */
 
-        @media (max-width: 900px) {
+        .success-message {
+            display: none;
 
-            .container {
-                padding: 40px 20px;
+            padding: 1rem;
+
+            margin-bottom: 2rem;
+
+            border-left:
+                4px solid var(--success);
+
+            border-radius: 8px;
+
+            background:
+                rgba(16, 185, 129, 0.1);
+
+            color: #087f5b;
+        }
+
+        .success-message.show {
+            display: block;
+
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-20px);
+
+                opacity: 0;
             }
 
+            to {
+                transform: translateX(0);
+
+                opacity: 1;
+            }
+        }
+
+
+        /* =========================================================
+   TABLET
+========================================================= */
+
+        @media (max-width: 1050px) {
+
+            .hero .container {
+                grid-template-columns:
+                    minmax(0, 1fr) minmax(340px, 0.8fr);
+
+                gap: 2.5rem;
+            }
+
+            .hero-right {
+                min-height: 500px;
+
+                padding: 2.5rem;
+            }
+
+            .hero-left h1 {
+                font-size: clamp(2.6rem, 5vw, 4rem);
+            }
+
+            .problem-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .modules-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .proof-stats {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .offer-card {
+                padding: 2.5rem;
+
+                gap: 2rem;
+            }
+        }
+
+
+        /* =========================================================
+   TABLET / MOBILE
+========================================================= */
+
+        @media (max-width: 850px) {
+
             .hero {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-                padding: 50px 0 70px;
+                min-height: auto;
+
+                padding: 55px 0 70px;
+
+                background-image:
+                    linear-gradient(180deg,
+                        rgba(250, 250, 250, 0.97),
+                        rgba(250, 250, 250, 0.88)),
+                    url("hero-img1.jpg");
+
                 background-position: center;
             }
 
             .hero .container {
                 display: flex;
+
                 flex-direction: column;
+
                 align-items: stretch;
+
                 gap: 3rem;
-                width: 100%;
+            }
+
+            .hero-left {
+                max-width: 750px;
             }
 
             .hero-right {
+                width: 100%;
+
                 min-height: 500px;
             }
 
-            .hero-left h1 {
-                font-size: clamp(2.6rem, 9vw, 4rem);
+            .student-results {
+                grid-template-columns: 1fr;
             }
 
-            .payment-container {
-                max-width: 600px;
-                margin: 100px auto;
-                background: white;
-                padding: 2rem;
-                border-radius: 20px;
-                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            .offer-card {
+                grid-template-columns: 1fr;
             }
 
-            .payment-container h2 {
-                font-size: 1.5rem;
+            .offer-price {
+                max-width: 500px;
+
+                width: 100%;
+
+                margin: 0 auto;
             }
-
-              /* ============ REGISTRATION PAGE ============ */
-        .register-container {
-            padding: 2rem;
         }
 
-        .register-container h2 {
-            font-size: 1.6rem;
-        }
 
-        .register-container p {
-            margin-bottom: 2rem;
-        }
+        /* =========================================================
+   MOBILE
+========================================================= */
 
-            .login-container {
-            padding: 2rem;
-        }
-
-        .login-container h2 {
-            font-size: 1.6rem;
-        }
-
-        }
-
-        /* ============ RESPONSIVE ============ */
-        @media (max-width: 768px) {
+        @media (max-width: 650px) {
 
             .container {
-                padding: 20px;
+                width: min(100% - 30px, 1200px);
             }
 
-            .hero {
-                grid-template-columns: 1fr;
-                padding: 40px 0;
+            /* Navbar */
+
+            .navbar {
+                padding: 0.65rem 0;
             }
 
-            .hero-left h1 {
-                font-size: 2.2rem;
+            .navbar-content {
+                width: calc(100% - 30px);
             }
-
-            .dashboard-header {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-                align-items: flex-start;
-                text-align: left;
-                justify-content: flex-start;
-            }
-
-            #dashboard .dashboard-header>div:last-child {
-                width: 100%;
-                justify-content: space-between;
-                gap: 0.8rem !important;
-            }
-
-            .modules-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .success-message {
-            background: rgba(16, 185, 129, 0.1);
-            border-left: 4px solid var(--success);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            display: none;
-        }
-
-        .success-message.show {
-            display: block;
-            animation: slideIn 0.3s ease-out;
-        }
-
-        @media (max-width: 600px) {
 
             .logo {
                 gap: 7px;
-                font-size: 1.15rem;
+
+                font-size: 1.05rem;
             }
 
             .logo-icon img {
-                width: 42px;
-                height: 42px;
+                width: 40px;
+                height: 40px;
             }
 
             .logo-desktop-text {
@@ -1160,12 +2184,8 @@
                 display: inline !important;
             }
 
-            .navbar-content {
-                padding: 0 15px;
-            }
-
             .nav-right {
-                gap: 0.7rem;
+                gap: 0.5rem;
             }
 
             .nav-right a {
@@ -1173,93 +2193,407 @@
             }
 
             .nav-right .btn {
-                padding: 0.65rem 1.1rem;
+                min-height: 42px;
+
+                padding: 0 1rem;
+
                 border-radius: 8px;
-                font-size: 0.9rem;
+
+                font-size: 0.82rem;
             }
 
+            /* Landing */
 
             #landing {
-                padding-top: 70px;
+                padding-top: 60px;
             }
 
+            /* Hero */
+
             .hero {
-                padding: 35px 0 55px;
+                padding: 40px 0 55px;
+            }
+
+            .hero .container {
+                width: calc(100% - 30px);
+
+                gap: 2.5rem;
+            }
+
+            .hero-eyebrow {
+                padding: 6px 10px;
+
+                font-size: 0.62rem;
+
+                letter-spacing: 0.05em;
+            }
+
+            .hero-left h1 {
+                margin-bottom: 1.15rem;
+
+                font-size:
+                    clamp(2.35rem, 11vw, 3.4rem);
+
+                line-height: 1.02;
+
+                letter-spacing: -0.05em;
+            }
+
+            .hero-left>p {
+                margin-bottom: 1.5rem;
+
+                font-size: 0.93rem;
+
+                line-height: 1.7;
             }
 
             .hero-features {
                 grid-template-columns: 1fr;
+
+                gap: 0.65rem;
+
+                margin-bottom: 1.7rem;
+            }
+
+            .hero-features li {
+                align-items: flex-start;
+
+                font-size: 0.84rem;
+            }
+
+            .hero-features li::before {
+                margin-top: 1px;
             }
 
             .hero-buttons {
                 flex-direction: column;
+
                 align-items: stretch;
+
+                width: 100%;
             }
 
             .hero-buttons .btn {
                 width: 100%;
             }
 
+            .hero-trust {
+                font-size: 0.7rem;
+            }
+
+            /* Hero card */
+
             .hero-right {
-                min-height: 560px;
+                min-height: 520px;
+
                 padding: 2rem 1.4rem;
 
                 border-radius: 22px;
             }
 
             .hero-right h2 {
-                font-size: 2.1rem;
+                font-size:
+                    clamp(2rem, 9vw, 2.5rem);
+            }
+
+            .offer-subtitle {
+                font-size: 0.88rem;
+            }
+
+            .price-box {
+                padding: 1.1rem;
             }
 
             .price-amount {
                 font-size: 3rem;
             }
 
-            #dashboard .dashboard-header {
-                padding: 1.3rem;
-                margin-bottom: 1.5rem;
-                border-radius: 12px;
-                align-items: flex-start;
-                text-align: left;
+            /* Sections */
+
+            .problem-section,
+            .solution-section,
+            .modules-section,
+            .proof-section,
+            .offer-section,
+            .faq-section {
+                padding: 70px 0;
             }
 
-            #dashboard .dashboard-header h1 {
+            .section-eyebrow {
+                font-size: 0.65rem;
+            }
+
+            .problem-section h2,
+            .solution-section h2,
+            .modules-section h2,
+            .proof-section h2,
+            .faq-section h2 {
+                font-size:
+                    clamp(2rem, 9vw, 2.7rem);
+
+                letter-spacing: -0.045em;
+            }
+
+            .section-intro {
+                margin-bottom: 2rem;
+
+                font-size: 0.9rem;
+            }
+
+            /* Problem */
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+
+                gap: 1rem;
+
+                margin-top: 2rem;
+            }
+
+            .problem-card {
+                padding: 1.4rem;
+            }
+
+            /* Modules */
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+
+                gap: 1rem;
+
+                margin-top: 2rem;
+            }
+
+            .module-card {
+                min-height: auto;
+
+                padding: 1.5rem;
+            }
+
+            .module-card h3 {
+                font-size: 1.05rem;
+            }
+
+            /* Proof */
+
+            .proof-stats {
+                grid-template-columns: 1fr;
+
+                gap: 0.8rem;
+
+                margin: 2rem 0;
+            }
+
+            .proof-card {
+                padding: 1.3rem;
+            }
+
+            .proof-card strong {
+                font-size: 1.7rem;
+            }
+
+            .student-results {
+                gap: 0.9rem;
+            }
+
+            .testimonial-card {
+                padding: 1.4rem;
+            }
+
+            /* Offer */
+
+            .offer-card {
+                padding: 2rem 1.2rem;
+
+                border-radius: 22px;
+
+                gap: 2rem;
+            }
+
+            .offer-card-content h2 {
+                font-size: 2rem;
+            }
+
+            .offer-list {
+                grid-template-columns: 1fr;
+
+                gap: 0.65rem;
+            }
+
+            .offer-list li {
+                font-size: 0.82rem;
+            }
+
+            .offer-price {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .current-price {
+                font-size: 3.4rem;
+            }
+
+            /* FAQ */
+
+            .faq-list {
+                margin-top: 2rem;
+            }
+
+            .faq-item {
+                padding: 1.25rem 0;
+            }
+
+            .faq-item h3 {
+                font-size: 0.95rem;
+            }
+
+            .faq-item p {
+                font-size: 0.84rem;
+            }
+
+            /* Final CTA */
+
+            .final-cta {
+                padding: 75px 0;
+            }
+
+            .final-cta h2 {
+                font-size:
+                    clamp(2.2rem, 10vw, 3rem);
+            }
+
+            .final-cta p {
+                font-size: 0.9rem;
+            }
+
+            /* Footer */
+
+            footer {
+                padding: 1.5rem 0;
+            }
+
+            footer .container {
+                flex-direction: column;
+
+                align-items: center;
+
+                text-align: center;
+
+                gap: 0.35rem;
+            }
+
+            footer p {
+                font-size: 0.68rem;
+            }
+
+            /* Forms */
+
+            .payment-container,
+            .register-container,
+            .login-container {
+                width: calc(100% - 30px);
+
+                margin: 85px auto;
+
+                padding: 1.5rem;
+
+                border-radius: 16px;
+            }
+
+            .payment-container h2,
+            .register-container h2,
+            .login-container h2 {
+                font-size: 1.5rem;
+            }
+
+            /* Dashboard */
+
+            .dashboard-header {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                padding: 1.3rem;
+
+                gap: 1rem;
+
+                border-radius: 13px;
+            }
+
+            .dashboard-header h1 {
                 font-size: 1.35rem;
             }
 
-            #dashboard .dashboard-header p {
-                font-size: 0.8rem;
-            }
+            .user-info {
+                width: 100%;
 
-            #dashboard .user-info {
+                justify-content: space-between;
+
                 gap: 0.6rem;
             }
 
-            #dashboard .user-avatar {
+            .user-avatar {
                 width: 40px;
                 height: 40px;
-                font-size: 1.1rem;
+
+                font-size: 1rem;
             }
 
-            #dashboard .logout-btn {
+            .logout-btn {
                 padding: 0.5rem 0.9rem;
-                border-radius: 8px;
-                font-size: 0.8rem;
+
+                font-size: 0.78rem;
+            }
+
+            .module-card {
+                border-radius: 13px;
             }
         }
 
-        @keyframes slideIn {
-            from {
-                transform: translateX(-20px);
-                opacity: 0;
+
+        /* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+        @media (max-width: 380px) {
+
+            .container {
+                width: calc(100% - 24px);
             }
 
-            to {
-                transform: translateX(0);
-                opacity: 1;
+            .hero .container {
+                width: calc(100% - 24px);
+            }
+
+            .hero-left h1 {
+                font-size: 2.15rem;
+            }
+
+            .hero-right {
+                min-height: 500px;
+
+                padding: 1.5rem 1rem;
+            }
+
+            .hero-right h2 {
+                font-size: 1.9rem;
+            }
+
+            .price-amount {
+                font-size: 2.7rem;
+            }
+
+            .offer-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .current-price {
+                font-size: 3rem;
             }
         }
     </style>
+
+
+
 </head>
 
 <body>
@@ -1287,6 +2621,7 @@
         </div>
     </nav>
 
+
     <!-- ============ LANDING PAGE ============ -->
 
     <div id="landing" class="page active">
@@ -1300,37 +2635,39 @@
 
                     <div class="hero-eyebrow">
                         <span></span>
-                        Income Generator Blueprint
+                        ACELINE • INCOME GENERATOR BLUEPRINT
                     </div>
 
                     <h1>
-                        Build a System for
-                        <span class="highlight">Consistent Income.</span>
+                        Turn Your Phone Into a
+                        <span class="highlight">Cash-Flow Machine.</span>
                     </h1>
 
                     <p>
-                        A practical step-by-step blueprint designed to help you
-                        build income systems, create consistent cash flow, and
-                        develop a business you can grow and scale.
+                        A practical step-by-step system designed for Nigerians
+                        who want to build a second income by creating digital
+                        products, marketing online, and developing a business
+                        they can grow and scale.
                     </p>
 
                     <ul class="hero-features">
-                        <li>Step-by-step income strategies</li>
-                        <li>Professional video lessons</li>
-                        <li>Business building frameworks</li>
-                        <li>Practical implementation guides</li>
-                        <li>Learn at your own pace</li>
-                        <li>Certificate upon completion</li>
+                        <li>Learn how to create a sellable digital product</li>
+                        <li>Build offers people actually want to buy</li>
+                        <li>Learn organic and paid traffic strategies</li>
+                        <li>Understand how to run Meta ads</li>
+                        <li>Practical step-by-step implementation</li>
+                        <li>Lifetime access + certificate upon completion</li>
                     </ul>
 
                     <div class="hero-buttons">
 
                         <button class="btn btn-primary" onclick="showPage('payment'); return false;">
-                            Get the Blueprint
+                            Join for ₦10,000
                         </button>
 
-                        <button class="btn btn-secondary" onclick="showPage('login'); return false;">
-                            Explore the Course
+                        <button class="btn btn-secondary"
+                            onclick="document.getElementById('offer').scrollIntoView({behavior:'smooth'}); return false;">
+                            See What's Inside
                         </button>
 
                     </div>
@@ -1351,6 +2688,7 @@
 
                     <!-- Background image -->
                     <div class="hero-image"></div>
+
                     <!-- Red overlay -->
                     <div class="hero-overlay"></div>
 
@@ -1362,14 +2700,14 @@
                         </div>
 
                         <h2>
-                            Start Building
-                            Your Income System.
+                            Build Your
+                            Income System.
                         </h2>
 
                         <p class="offer-subtitle">
                             Get the complete Income Generator Blueprint
-                            and learn practical strategies for building
-                            and scaling a sustainable business.
+                            and learn the practical system for creating,
+                            marketing, and selling digital products.
                         </p>
 
                         <div class="price-box">
@@ -1390,20 +2728,484 @@
                         </div>
 
                         <button class="btn btn-primary" onclick="showPage('payment'); return false;">
-                            Get Instant Access
+                            Start the Blueprint
                         </button>
 
                         <div class="offer-note">
-                            Secure checkout • Lifetime course access
+                            Secure checkout • Instant access • Lifetime access
                         </div>
 
                     </div>
 
                 </div>
 
+            </div>
+
         </section>
 
+
+        <!-- ============ PROBLEM ============ -->
+
+        <section class="problem-section">
+
+            <div class="container">
+
+                <div class="section-eyebrow">
+                    THE PROBLEM
+                </div>
+
+                <h2>
+                    Nigeria's economy isn't
+                    <span class="highlight">waiting for anyone.</span>
+                </h2>
+
+                <p class="section-intro">
+                    Salaries stay flat while prices keep rising.
+                    Generic "hustle" advice is everywhere, but very few
+                    people show you an actual system you can follow.
+                </p>
+
+                <div class="problem-grid">
+
+                    <div class="problem-card">
+                        <span class="problem-icon">×</span>
+                        <h3>Income Isn't Keeping Up</h3>
+                        <p>
+                            Salaries remain stagnant while the cost of living
+                            continues to increase.
+                        </p>
+                    </div>
+
+                    <div class="problem-card">
+                        <span class="problem-icon">×</span>
+                        <h3>Too Much Vague Advice</h3>
+                        <p>
+                            Social media is full of "make money online"
+                            advice without a clear system to follow.
+                        </p>
+                    </div>
+
+                    <div class="problem-card">
+                        <span class="problem-icon">×</span>
+                        <h3>Theory Isn't Enough</h3>
+                        <p>
+                            Knowing what to do isn't the same as knowing
+                            exactly how to implement it.
+                        </p>
+                    </div>
+
+                    <div class="problem-card">
+                        <span class="problem-icon">×</span>
+                        <h3>Ads Can Be Confusing</h3>
+                        <p>
+                            Everyone talks about Meta ads, but beginners
+                            rarely know where to start.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============ SOLUTION ============ -->
+
+        <section class="solution-section" id="offer">
+
+            <div class="container">
+
+                <div class="section-eyebrow">
+                    THE SOLUTION
+                </div>
+
+                <h2>
+                    What if you had a
+                    <span class="highlight">system?</span>
+                </h2>
+
+                <p class="section-intro">
+                    The Income Generator Blueprint gives you a structured
+                    path from finding your product idea to launching,
+                    marketing, selling, and scaling it.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============ MODULES ============ -->
+
+        <section class="modules-section">
+
+            <div class="container">
+
+                <div class="section-eyebrow">
+                    INSIDE THE BLUEPRINT
+                </div>
+
+                <h2>
+                    9 Modules.
+                    <span class="highlight">One System.</span>
+                </h2>
+
+                <p class="section-intro">
+                    Each module builds on the previous one, taking you
+                    from the foundation to implementation and scaling.
+                </p>
+
+                <div class="modules-grid">
+
+                    <div class="module-card">
+                        <span class="module-number">01</span>
+                        <h3>Making Money in Today's Digital Economy</h3>
+                        <p>
+                            Understand consistent cash flow, product sales,
+                            visibility, and the foundations of digital income.
+                        </p>
+                    </div>
+
+                    <div class="module-card">
+                        <span class="module-number">02</span>
+                        <h3>Building Wealth in Today's Economy</h3>
+                        <p>
+                            Learn selling, marketing, skill development,
+                            and entrepreneurship.
+                        </p>
+                    </div>
+
+                    <div class="module-card">
+                        <span class="module-number">03</span>
+                        <h3>Finding Your Product Angle</h3>
+                        <p>
+                            Identify skills and knowledge that can be
+                            transformed into a sellable digital product.
+                        </p>
+                    </div>
+
+                    <div class="module-card">
+                        <span class="module-number">04</span>
+                        <h3>Information Marketing</h3>
+                        <p>
+                            Understand the information-product economy
+                            and how to position your product.
+                        </p>
+                    </div>
+
+                    <div class="module-card">
+                        <span class="module-number">05</span>
+                        <h3>Building & Launching Your Product</h3>
+                        <p>
+                            Turn your idea into a real product that is
+                            ready to launch and sell.
+                        </p>
+                    </div>
+
+                    <div class="module-card">
+                        <span class="module-number">06</span>
+                        <h3>Organic Traffic, Paid Traffic & Visibility</h3>
+                        <p>
+                            Learn how to get attention organically and
+                            introduce paid traffic strategically.
+                        </p>
+                    </div>
+
+                    <div class="module-card">
+                        <span class="module-number">07</span>
+                        <h3>How to Run Meta Ads</h3>
+                        <p>
+                            Understand ad setup, targeting, budgets,
+                            testing, and optimization.
+                        </p>
+                    </div>
+
+                    <div class="module-card">
+                        <span class="module-number">08</span>
+                        <h3>Step-by-Step: Your First ₦1,300,000</h3>
+                        <p>
+                            Follow a practical walkthrough that brings
+                            the previous lessons together.
+                        </p>
+                    </div>
+
+                    <div class="module-card">
+                        <span class="module-number">09</span>
+                        <h3>Scaling & Building Long-Term Wealth</h3>
+                        <p>
+                            Turn your first results into a repeatable
+                            system that can grow over time.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============ PROOF ============ -->
+
+        <section class="proof-section" id="proof">
+
+            <div class="container">
+
+                <div class="section-eyebrow">
+                    PROOF, NOT PROMISES
+                </div>
+
+                <h2>
+                    Real dashboards.
+                    <span class="highlight">Real results.</span>
+                </h2>
+
+                <p class="section-intro">
+                    Results shared by students and clients implementing
+                    the strategies taught through the program.
+                </p>
+
+                <div class="proof-stats">
+
+                    <div class="proof-card">
+                        <span>All-Time Affiliate Earnings</span>
+                        <strong>₦607,498</strong>
+                        <small>24 sales · Expertnaire</small>
+                    </div>
+
+                    <div class="proof-card">
+                        <span>Sales Volume</span>
+                        <strong>₦713,000</strong>
+                        <small>31 sales · Selar</small>
+                    </div>
+
+                    <div class="proof-card">
+                        <span>Products Live</span>
+                        <strong>7</strong>
+                        <small>Creator dashboard</small>
+                    </div>
+
+                    <div class="proof-card">
+                        <span>Customers Reached</span>
+                        <strong>44</strong>
+                        <small>Last 30 days</small>
+                    </div>
+
+                </div>
+
+                <div class="student-results">
+
+                    <div class="testimonial-card">
+                        <p>
+                            "I made my first ₦400,000 within 60 days
+                            of implementing this program."
+                        </p>
+
+                        <strong>Aceline Student</strong>
+                        <span>Student result</span>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <p>
+                            "I made my first ₦1,000,000 after applying
+                            this model — with the added advantage of paid adverts."
+                        </p>
+
+                        <strong>David Jeremiah</strong>
+                        <span>Aceline Student</span>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <p>
+                            "We made our first ₦1,300,000 in less than
+                            90 days of implementing this same strategy."
+                        </p>
+
+                        <strong>Business Client</strong>
+                        <span>Aceline Client</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============ OFFER ============ -->
+
+        <section class="offer-section">
+
+            <div class="container">
+
+                <div class="offer-card">
+
+                    <div class="offer-card-content">
+
+                        <div class="section-eyebrow">
+                            THE OFFER
+                        </div>
+
+                        <h2>
+                            Everything you need
+                            to start building.
+                        </h2>
+
+                        <p>
+                            Get the complete Income Generator Blueprint
+                            with everything you need to move from idea
+                            to implementation.
+                        </p>
+
+                        <ul class="offer-list">
+                            <li>✓ All 9 modules with self-paced video training</li>
+                            <li>✓ Product & offer-building templates</li>
+                            <li>✓ Meta Ads setup walkthrough</li>
+                            <li>✓ Private student community</li>
+                            <li>✓ Free updates as the blueprint evolves</li>
+                            <li>✓ Certificate upon completion</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="offer-price">
+
+                        <span>INCOME GENERATOR BLUEPRINT</span>
+
+                        <div class="old-price">
+                            ₦25,000
+                        </div>
+
+                        <div class="current-price">
+                            ₦10,000
+                        </div>
+
+                        <p>
+                            One-time payment · Lifetime access
+                        </p>
+
+                        <button class="btn btn-primary" onclick="showPage('payment'); return false;">
+                            Start the Blueprint — ₦10,000
+                        </button>
+
+                        <small>
+                            Secure checkout • Instant access
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============ FAQ ============ -->
+
+        <section class="faq-section">
+
+            <div class="container">
+
+                <div class="section-eyebrow">
+                    BEFORE YOU JOIN
+                </div>
+
+                <h2>
+                    Questions people
+                    <span class="highlight">ask us.</span>
+                </h2>
+
+                <div class="faq-list">
+
+                    <div class="faq-item">
+                        <h3>Do I need experience to start?</h3>
+                        <p>
+                            No. The blueprint starts from the foundation,
+                            including how to find your product angle,
+                            before moving into marketing and advertising.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How much money do I need to run ads?</h3>
+                        <p>
+                            Module 7 covers realistic starting budgets,
+                            testing strategies, and how to scale once
+                            your product begins converting.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How long does it take to see results?</h3>
+                        <p>
+                            Results vary from person to person. The case
+                            studies shared by students were achieved through
+                            consistent implementation over time.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Is this a one-time payment?</h3>
+                        <p>
+                            Yes. ₦10,000 gives you lifetime access to all
+                            9 modules and future blueprint updates.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============ FINAL CTA ============ -->
+
+        <section class="final-cta">
+
+            <div class="container">
+
+                <div class="section-eyebrow">
+                    YOUR NEXT MOVE
+                </div>
+
+                <h2>
+                    Your first payout
+                    starts with one decision.
+                </h2>
+
+                <p>
+                    Start with ₦10,000 today and learn a system
+                    you can continue developing for years.
+                </p>
+
+                <button class="btn btn-primary" onclick="showPage('payment'); return false;">
+                    Join the Blueprint Now
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============ FOOTER ============ -->
+
+        <footer>
+            <div class="container">
+                <p>
+                    © 2026 ACELINE. All rights reserved.
+                </p>
+
+                <p>
+                    training.acelinebrand.com
+                </p>
+            </div>
+        </footer>
+
     </div>
+
 
     </div>
     <!-- ============ PAYMENT PAGE ============ -->
