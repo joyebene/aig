@@ -13,9 +13,9 @@ if (!PAYSTACK_SECRET_KEY) {
 // Configuration
 // ==========================================
 
-// ₦10,000
+// ₦50,000
 // Paystack expects amount in kobo
-const COURSE_AMOUNT_NAIRA = 10000;
+const COURSE_AMOUNT_NAIRA = 50000;
 const COURSE_AMOUNT_KOBO = COURSE_AMOUNT_NAIRA * 100;
 
 const PAYSTACK_BASE_URL =
