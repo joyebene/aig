@@ -852,10 +852,10 @@ document.addEventListener(
     async () => {
 
         // Handle Paystack callback first
-           const paymentHandled =
+        const paymentHandled =
             await handlePaymentCallback();
 
-              if (paymentHandled) {
+        if (paymentHandled) {
             console.log(
                 "Payment callback handled. Staying on registration."
             );
@@ -1017,6 +1017,15 @@ const modules = [
         videos: [
             {
                 id: 1,
+                title:
+                    "Wealth",
+                description:
+                    "Understanding wealth.",
+                videoUrl:
+                    "https://youtu.be/LaWQuc4fCOA"
+            },
+            {
+                id: 2,
                 title:
                     "Wealth Information",
                 description:
