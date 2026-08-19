@@ -2113,7 +2113,8 @@
                     <div class="footer-column">
                         <h4> PLATFORM </h4> <a href="#journey" style="color: #000000;"> The Journey </a> <a
                             href="#curriculum" style="color: #000000;"> Curriculum </a>
-                        <a href="#results" style="color: #000000;"> Results </a> <a href="#faq" style="color: #000000;"> FAQ </a>
+                        <a href="#results" style="color: #000000;"> Results </a> <a href="#faq" style="color: #000000;">
+                            FAQ </a>
                     </div>
                     <div class="footer-column">
                         <h4> COMPANY </h4> <a href="https://acelinebrand.com" target="_blank" rel="noopener noreferrer"
@@ -2178,8 +2179,6 @@
                     <select required>
                         <option value="">Select Payment Method</option>
                         <option value="card">Credit/Debit Card</option>
-                        <option value="upi">UPI</option>
-                        <option value="wallet">Digital Wallet</option>
                         <option value="bank">Bank Transfer</option>
                     </select>
                 </div>
@@ -2208,12 +2207,18 @@
             <form id="registerForm" onsubmit="registerUser(event)">
                 <div class="form-group">
                     <label>Full Name *</label>
-                    <input type="text" id="regFullName" required>
+                    <input title="fullName" type="text" id="regFullName" required>
                 </div>
 
                 <div class="form-group">
                     <label>Email *</label>
-                    <input type="email" id="regEmail" required>
+                    <input title="email" type="email" id="regEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number *</label>
+
+                    <input type="tel" id="regPhone" required placeholder="+234 801 234 5678">
                 </div>
 
                 <div class="form-group">
@@ -2228,7 +2233,7 @@
 
                 <div class="form-group">
                     <label>Confirm Password *</label>
-                    <input type="password" id="confirmPassword" required>
+                    <input title="confirmPassword" type="password" id="confirmPassword" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">Create
@@ -2295,207 +2300,58 @@
         </div>
     </div>
 
-    <script>
-        // Data
-        const modules = [
-            {
-                id: 1,
-                icon: 'fa-solid fa-bullhorn',
-                title: 'Module 1: Information Marketing',
-                description: 'Learn how to create and sell digital products effectively',
-                status: 'In Progress'
-            },
-            {
-                id: 2,
-                icon: 'fa-solid fa-chart-line',
-                title: 'Module 2: Sales Blueprint',
-                description: 'Master high-converting sales strategies and techniques',
-                status: 'Available'
-            },
-            {
-                id: 3,
-                icon: 'fa-solid fa-share-nodes',
-                title: 'Module 3: Social Media Mastery',
-                description: 'Build your brand and grow your audience on social platforms',
-                status: 'Available'
-            },
-            {
-                id: 4,
-                icon: 'fa-solid fa-wallet',
-                title: 'Module 4: Money Management',
-                description: 'Learn to manage and scale your income effectively',
-                status: 'Available'
-            },
-            {
-                id: 5,
-                icon: 'fa-solid fa-rocket',
-                title: 'Module 5: Business Scaling',
-                description: 'Advanced strategies to take your business to the next level',
-                status: 'Coming Soon'
-            }
-        ];
+    <div id="module" class="page">
 
-        // Utility Functions
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
+        <!-- MODULE HEADER -->
+        <section class="module-page-header">
 
-            // Show selected page
-            document.getElementById(pageId).classList.add('active');
+            <div class="container">
 
-            // Update navbar
-            updateNavbar(pageId);
+                <button type="button" id="backToDashboardBtn"
+                class="back-button">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back to Dashboard
+                </button>
 
-            // Scroll to top
-            window.scrollTo(0, 0);
-        }
+                <div id="moduleIcon" class="module-page-icon"></div>
 
-        function updateNavbar(pageId) {
-            const navRight = document.getElementById('navRight');
-            if (pageId === 'dashboard') {
-                navRight.innerHTML = `<span style="color: var(--text-light);">Logged in</span>`;
-            } else {
-                navRight.innerHTML = `
-                    <a href="#" onclick="showPage('landing'); return false;">Home</a>
-                    <button class="btn btn-primary" style="padding: 0.7rem 1.5rem;" onclick="showPage('login'); return false;">Login</button>
-                `;
-            }
-        }
+                <h1 id="moduleTitle">
+                    Loading module...
+                </h1>
 
-        // Payment Processing
-        function processPayment(e) {
-            e.preventDefault();
+                <p id="moduleDescription">
+                    Loading...
+                </p>
 
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('emailPayment').value;
+            </div>
 
-            // Simulate payment processing
-            alert('Payment Processing...\n\nIn a real application, this would connect to Razorpay, Stripe, or PayPal.\n\nAfter successful payment, you will be redirected to account creation.');
+        </section>
 
-            // Store payment info and redirect to registration
-            localStorage.setItem('pendingFullName', fullName);
-            localStorage.setItem('pendingEmail', email);
-            localStorage.setItem('paymentComplete', 'true');
 
-            showPage('register');
-        }
+        <!-- VIDEOS -->
 
-        // User Registration
-        function registerUser(e) {
-            e.preventDefault();
+        <main class="container">
 
-            const fullName = document.getElementById('regFullName').value;
-            const email = document.getElementById('regEmail').value;
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('regPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
+            <section class="videos-section">
 
-            if (password !== confirmPassword) {
-                alert('Passwords do not match!');
-                return;
-            }
+                <h2>
+                    Course Videos
+                </h2>
 
-            // Store user data
-            const userData = {
-                fullName,
-                email,
-                username,
-                password,
-                createdAt: new Date().toLocaleDateString()
-            };
+                <p class="section-description">
+                    Watch the lessons in order and
+                    continue your learning journey.
+                </p>
 
-            localStorage.setItem('user', JSON.stringify(userData));
+                <div id="videosContainer" class="videos-container"></div>
 
-            alert('Account created successfully! Please login with your credentials.');
-            showPage('login');
-        }
+            </section>
 
-        // User Login
-        function loginUser(e) {
-            e.preventDefault();
+        </main>
 
-            const loginEmail = document.getElementById('loginEmail').value;
-            const loginPassword = document.getElementById('loginPassword').value;
+    </div>
 
-            const userStr = localStorage.getItem('user');
-
-            if (!userStr) {
-                alert('No account found. Please create an account first.');
-                return;
-            }
-
-            const user = JSON.parse(userStr);
-
-            if ((user.email === loginEmail || user.username === loginEmail) && user.password === loginPassword) {
-                localStorage.setItem('loggedIn', 'true');
-                localStorage.setItem('currentUser', user.username);
-
-                // Load dashboard
-                loadDashboard(user.username);
-                showPage('dashboard');
-            } else {
-                alert('Invalid email/username or password!');
-            }
-        }
-
-        // Load Dashboard
-        function loadDashboard(username) {
-            document.getElementById('usernameDash').textContent = username;
-            renderModules();
-        }
-
-        // Render Modules
-        function renderModules() {
-            const container = document.getElementById('modulesContainer');
-
-            if (modules.length === 0) {
-                container.innerHTML = `
-                    <div style="grid-column: 1/-1;">
-                        <div class="empty-state">
-                            <div class="empty-state-icon">📦</div>
-                            <h3>No Modules Available</h3>
-                            <p>Your learning modules will appear here soon. Check back later!</p>
-                        </div>
-                    </div>
-                `;
-                return;
-            }
-
-            container.innerHTML = modules.map(module => `
-                <div class="module-card">
-                    <div class="module-icon">
-    <i class="${module.icon}"></i>
-</div>
-                    <h3>${module.title}</h3>
-                    <p>${module.description}</p>
-                    <div class="module-status ${module.status.toLowerCase().replace(' ', '-')}">
-                        ${module.status}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Logout
-        function logout() {
-            if (confirm('Are you sure you want to logout?')) {
-                localStorage.removeItem('loggedIn');
-                localStorage.removeItem('currentUser');
-                showPage('landing');
-            }
-        }
-
-        // Check if user is logged in on load
-        window.addEventListener('DOMContentLoaded', () => {
-            const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
-            if (isLoggedIn) {
-                const username = localStorage.getItem('currentUser');
-                loadDashboard(username);
-                showPage('dashboard');
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
