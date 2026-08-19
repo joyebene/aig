@@ -1029,7 +1029,7 @@ const modules = [
                 title:
                     "Wealth Information",
                 description:
-                    "Understanding wealth information.",
+                    "Understanding wealth in information.",
                 videoUrl:
                     "https://youtu.be/LaWQuc4fCOA"
             }
