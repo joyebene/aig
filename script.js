@@ -1,3 +1,4 @@
+// const API_URL = "http://localhost:5000/api";
 const API_URL = "https://aig-ljxr.onrender.com/api";
 // Data
 const module = [
@@ -730,38 +731,27 @@ async function processPayment(event) {
 }
 
 async function handlePaymentCallback() {
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
+    const params = new URLSearchParams(window.location.search);
 
     const reference =
-        params.get("reference");
+        params.get("reference") ||
+        params.get("trxref");
 
-    // Normal page load
+    // Not returning from Paystack
     if (!reference) {
-        return;
+        return false;
     }
 
     try {
-        console.log(
-            "Verifying payment:",
-            reference
-        );
+        console.log("Verifying payment:", reference);
 
         const response = await fetch(
-            `${API_URL}/payment/verify/${encodeURIComponent(
-                reference
-            )}`
+            `${API_URL}/payment/verify/${encodeURIComponent(reference)}`
         );
 
-        const result =
-            await response.json();
+        const result = await response.json();
 
-        console.log(
-            "Payment verification response:",
-            result
-        );
+        console.log("Payment verification response:", result);
 
         if (
             !response.ok ||
@@ -774,85 +764,75 @@ async function handlePaymentCallback() {
             );
         }
 
-        // --------------------------------------
-        // Check reference
-        // --------------------------------------
+        console.log("Payment verified successfully.");
 
-        const savedReference =
-            sessionStorage.getItem(
-                "paymentReference"
-            );
-
-        if (
-            savedReference &&
-            savedReference !== reference
-        ) {
-            throw new Error(
-                "Payment reference mismatch."
-            );
-        }
-
-        // --------------------------------------
-        // Payment successfully verified
-        // --------------------------------------
-
-        console.log(
-            "Payment verified successfully."
-        );
-
-        // Mark payment as verified
+        // Save payment status
         sessionStorage.setItem(
             "paymentVerified",
             "true"
         );
 
-        // --------------------------------------
-        // Get payment information
-        // --------------------------------------
-
+        // Keep the payment information
         const fullName =
-            sessionStorage.getItem(
-                "paymentFullName"
-            );
+            sessionStorage.getItem("paymentFullName");
 
         const email =
-            sessionStorage.getItem(
-                "paymentEmail"
-            );
+            sessionStorage.getItem("paymentEmail");
 
-        // --------------------------------------
-        // Pre-fill registration
-        // --------------------------------------
+        const phone =
+            sessionStorage.getItem("paymentPhone");
 
-        if (fullName) {
-            document.getElementById(
-                "regFullName"
-            ).value = fullName;
-        }
+        console.log("Payment customer:", {
+            fullName,
+            email,
+            phone
+        });
 
-        if (email) {
-            document.getElementById(
-                "regEmail"
-            ).value = email;
-        }
+        // IMPORTANT:
+        // Do NOT try to access registration inputs here.
+        // The registration section may not be active yet.
 
-        // --------------------------------------
-        // Remove reference from browser URL
-        // --------------------------------------
-
+        // Clean Paystack URL
         window.history.replaceState(
             {},
             document.title,
             window.location.pathname
         );
 
-        // --------------------------------------
-        // Go to registration
-        // --------------------------------------
+        // Go directly to registration
+        console.log("Moving to registration...");
 
         showPage("register");
 
+        // Now registration page is active.
+        // Fill the fields AFTER showPage().
+        const regFullName =
+            document.getElementById("regFullName");
+
+        const regEmail =
+            document.getElementById("regEmail");
+
+        const regPhone =
+            document.getElementById("regPhone");
+
+        if (regFullName && fullName) {
+            regFullName.value = fullName;
+        }
+
+        if (regEmail && email) {
+            regEmail.value = email;
+        }
+
+        if (regPhone && phone) {
+            regPhone.value = phone;
+        }
+
+        console.log("Registration page opened successfully.");
+
+        return true;
+
     } catch (error) {
+
         console.error(
             "Payment verification error:",
             error
@@ -862,6 +842,8 @@ async function handlePaymentCallback() {
             error.message ||
             "Unable to verify payment."
         );
+
+        return false;
     }
 }
 
@@ -870,7 +852,16 @@ document.addEventListener(
     async () => {
 
         // Handle Paystack callback first
-        await handlePaymentCallback();
+           const paymentHandled =
+            await handlePaymentCallback();
+
+              if (paymentHandled) {
+            console.log(
+                "Payment callback handled. Staying on registration."
+            );
+
+            return;
+        }
 
         const token =
             localStorage.getItem("authToken");
