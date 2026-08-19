@@ -1022,7 +1022,7 @@ const modules = [
                 description:
                     "Understanding wealth.",
                 videoUrl:
-                    "https://youtu.be/LaWQuc4fCOA"
+                    "https://youtu.be/BR8m1Y8GFSY"
             },
             {
                 id: 2,
@@ -1031,7 +1031,7 @@ const modules = [
                 description:
                     "Understanding wealth information.",
                 videoUrl:
-                    "https://youtu.be/BR8m1Y8GFSY"
+                    "https://youtu.be/LaWQuc4fCOA"
             }
         ]
     },
