@@ -56,7 +56,42 @@ export const register = async (
             message: "Registration successful",
             data: user,
         });
-    } catch (error) {
+    } catch (error: any) {
+
+        console.error("Registration error:", error);
+
+        // --------------------------------------
+        // Email already registered
+        // --------------------------------------
+
+        if (
+            error?.message === "Email is already registered"
+        ) {
+            return res.status(409).json({
+                success: false,
+                message: "Email is already registered",
+                data: null,
+            });
+        }
+
+
+        // --------------------------------------
+        // Username already registered
+        // --------------------------------------
+
+        if (
+            error?.message === "Username is already registered"
+        ) {
+            return res.status(409).json({
+                success: false,
+                message: "Username is already registered",
+                data: null,
+            });
+        }
+
+        // --------------------------------------
+        // Let global error handler handle others
+        // --------------------------------------
         next(error);
     }
 };
