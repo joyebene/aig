@@ -1278,30 +1278,31 @@ function goBackToDashboard() {
         "index.html";
 }
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+document.addEventListener("DOMContentLoaded", () => {
+    const modulePage = document.getElementById("module");
 
-        const token =
-            localStorage.getItem(
-                "authToken"
-            );
-
-        if (!token) {
-
-            alert(
-                "Please login to access the course."
-            );
-
-            window.location.href =
-                "index.html";
-
-            return;
-        }
-
-        loadModule();
+    // If this page does not contain the module section,
+    // do nothing.
+    if (!modulePage) {
+        return;
     }
-);
+
+    const token = localStorage.getItem("authToken");
+
+    // Only check authentication when module page
+    // is actually active.
+    if (!modulePage.classList.contains("active")) {
+        return;
+    }
+
+    if (!token) {
+        alert("Please login to access the course.");
+        showPage("login");
+        return;
+    }
+
+    loadModule();
+});
 
 function renderVideos(videos) {
     const container = document.getElementById("videosContainer");
