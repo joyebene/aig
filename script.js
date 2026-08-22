@@ -68,7 +68,7 @@ const module = [
     {
         id: 8,
         icon: "fa-solid fa-money-bill-trend-up",
-        title: "Module 8: How to Make One Millionaire",
+        title: "Module 8: How to Make One Million",
         description:
             "Explore strategies, systems and principles for achieving significant financial growth.",
         status: "Available",
@@ -1161,14 +1161,14 @@ const modules = [
         icon:
             "fa-solid fa-money-bill-trend-up",
         title:
-            "Module 8: How to Make One Millionaire",
+            "Module 8: How to Make One Million",
         description:
             "Learn the strategies discussed in this module.",
         videos: [
             {
                 id: 1,
                 title:
-                    "How to Make One Millionaire",
+                    "How to Make One Million",
                 description:
                     "Module 8 lesson.",
                 videoUrl:
@@ -1492,3 +1492,35 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+function animateStudentCount() {
+    const counter = document.getElementById("studentCounter");
+
+    if (!counter) return;
+
+    const target = 100;
+    const duration = 2500;
+    const startTime = performance.now();
+
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Smooth ease-out animation
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+        const currentValue = Math.floor(target * easedProgress);
+
+        counter.textContent = currentValue.toLocaleString();
+
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        } else {
+            counter.textContent = "100";
+        }
+    }
+
+    requestAnimationFrame(updateCounter);
+}
+
+document.addEventListener("DOMContentLoaded", animateStudentCount);

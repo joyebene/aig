@@ -1309,6 +1309,391 @@
             font-size: 9px;
         }
 
+
+        /* ========================================================= STUDENT RESULTS ========================================================= */
+
+        .student-results-section {
+            padding: 125px 0;
+            background: var(--cream);
+        }
+
+        .student-results-heading {
+            display: grid;
+            grid-template-columns: 1fr 0.75fr;
+            gap: 80px;
+            align-items: end;
+        }
+
+        .student-results-heading h2 {
+            margin: 0;
+            font-size: clamp(45px, 5vw, 75px);
+            line-height: 0.96;
+            letter-spacing: -0.065em;
+        }
+
+        .student-results-heading h2 span {
+            color: var(--aceline-red);
+        }
+
+        .student-results-heading p {
+            margin: 0 0 12px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        .student-results-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 60px;
+        }
+
+        .student-stat {
+            padding: 28px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .student-stat-label {
+            display: block;
+            color: #85857f;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.13em;
+        }
+
+        .student-stat strong {
+            display: block;
+            margin: 14px 0 7px;
+            color: var(--black);
+            font-size: clamp(32px, 4vw, 52px);
+            line-height: 0.9;
+            letter-spacing: -0.06em;
+        }
+
+        .student-stat small {
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .student-results-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 45px;
+        }
+
+        .student-result-image-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.07);
+        }
+
+        .student-result-image-card img {
+            width: 100%;
+            height: auto;
+            min-height: 360px;
+            display: block;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .student-result-caption {
+            padding: 22px 25px;
+            border-top: 1px solid var(--border);
+        }
+
+        .student-result-caption span {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--aceline-red);
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+        }
+
+        .student-result-caption strong {
+            display: block;
+            font-size: 18px;
+            letter-spacing: -0.025em;
+        }
+
+        .student-result-caption p {
+            margin: 7px 0 0;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .student-results-note {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            margin-top: 30px;
+        }
+
+        .student-results-note span {
+            flex: 0 0 auto;
+            color: var(--aceline-red);
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+        }
+
+        .student-results-note p {
+            max-width: 750px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            z-index: 9999;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 13px 18px;
+            border-radius: 50px;
+
+            background: #25D366;
+            color: #fff;
+
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .whatsapp-float span {
+            font-size: 21px;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .student-results-whatsapp {
+            margin-top: 45px;
+            padding: 28px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .student-results-whatsapp p {
+            margin: 0;
+            color: var(--black);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+
+
+        .student-whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 22px;
+            border-radius: 50px;
+            background: #25D366;
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 800;
+            white-space: nowrap;
+            transition: all 0.25s ease;
+        }
+
+        .student-whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.25);
+        }
+
+        .student-whatsapp-btn span {
+            font-size: 17px;
+        }
+
+        /* =========================================================
+   PRICING WHATSAPP
+========================================================= */
+
+        .pricing-whatsapp {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+
+            text-align: center;
+        }
+
+        .pricing-whatsapp>span {
+            display: block;
+            margin-bottom: 10px;
+
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .pricing-whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            color: #25D366;
+            text-decoration: none;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            transition: all 0.25s ease;
+        }
+
+        .pricing-whatsapp-btn span {
+            font-size: 17px;
+        }
+
+        .pricing-whatsapp-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.85;
+        }
+
+        /* =========================================================
+   STUDENT COUNT
+========================================================= */
+
+        .student-count {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .student-count>strong {
+            font-size: 34px;
+            line-height: 1;
+            letter-spacing: -1.5px;
+        }
+
+        .student-count-label {
+            display: block;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .student-count small {
+            display: block;
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        @media (max-width: 600px) {
+            .student-count {
+                margin-top: 22px;
+            }
+
+            .student-count>strong {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .student-results-whatsapp {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 24px;
+            }
+
+            .student-whatsapp-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .whatsapp-float {
+                right: 16px;
+                bottom: 16px;
+                width: 52px;
+                height: 52px;
+                padding: 0;
+                justify-content: center;
+                border-radius: 50%;
+            }
+
+            .whatsapp-float strong {
+                display: none;
+            }
+
+            .whatsapp-float span {
+                font-size: 23px;
+            }
+        }
+
+        /* STUDENT RESULTS RESPONSIVE */
+
+        @media (max-width: 720px) {
+
+            .student-results-section {
+                padding: 85px 0;
+            }
+
+            .student-results-heading {
+                display: block;
+            }
+
+            .student-results-heading h2 {
+                font-size: 48px;
+            }
+
+            .student-results-heading p {
+                margin-top: 30px;
+            }
+
+            .student-results-stats {
+                grid-template-columns: 1fr;
+                margin-top: 45px;
+            }
+
+            .student-results-gallery {
+                grid-template-columns: 1fr;
+                margin-top: 35px;
+            }
+
+            .student-result-image-card img {
+                min-height: auto;
+            }
+
+            .student-results-note {
+                display: block;
+            }
+
+            .student-results-note p {
+                margin-top: 10px;
+            }
+        }
+
+
         /* ========================================================= RESPONSIVE ========================================================= */
         @media (max-width: 1000px) {
             .main-nav {
@@ -1692,7 +2077,7 @@
                 <div class="container hero-container">
                     <div class="hero-content">
                         <div class="eyebrow"> <span class="eyebrow-dot"></span> EXCLUSIVE GROWTH TRAINING </div>
-                        <h1> Build. Launch. <br> <span>Sell.</span> </h1>
+                        <h1> Income Generator<br> <span>Blueprint.</span> </h1>
                         <p class="hero-description"> The Income Generator Blueprint is a practical, step-by-step system
                             for turning your knowledge, skills and ideas into digital products, attracting customers and
                             building an income stream you can grow. </p>
@@ -1702,20 +2087,43 @@
                                 onclick="document.getElementById('journey').scrollIntoView({behavior:'smooth'}); return false;">
                                 Explore the blueprint <span>↓</span> </button> </div>
                         <div class="hero-meta">
-                            <div class="avatar-stack"> <span>J</span> <span>D</span> <span>A</span> <span>+</span>
+
+                            <div class="avatar-stack">
+                                <span>J</span>
+                                <span>D</span>
+                                <span>A</span>
+                                <span>+</span>
                             </div>
-                            <div> <strong>Built for practical action</strong> <small> Learn the system. Implement the
-                                    system. Grow. </small> </div>
+
+                            <div>
+                                <strong>Built for practical action</strong>
+                                <small>
+                                    Learn the system. Implement the system. Grow.
+                                </small>
+                            </div>
+
+                        </div>
+
+                        <!-- STUDENT COUNT -->
+                        <div class="student-count">
+                            <strong>
+                                <span id="studentCounter">0</span>+
+                            </strong>
+
+                            <div>
+                                <span class="student-count-label">STUDENTS</span>
+                                <small>Learning, building & implementing</small>
+                            </div>
                         </div>
                     </div> <!-- HERO VISUAL -->
                     <div class="hero-visual">
                         <div class="hero-card-main">
                             <div class="hero-card-top"> <span>ACELINE</span> <span>01 / 09</span> </div>
                             <div class="hero-card-content"> <span class="mini-label"> INCOME GENERATOR BLUEPRINT </span>
-                                <h2> Turn your knowledge into an income system. </h2>
-                                <p> Product creation · Marketing · Sales · Visibility · Meta Ads · Scaling </p>
+                                <h2>Learn a step by step method of earning $200 monthly. </h2>
+                                <p> Start Your Business · Marketing · Sales · Visibility · Meta Ads · Scaling </p>
                             </div>
-                            <div class="hero-card-bottom"> <span>SELF-PACED TRAINING</span> <strong> ₦50,000 </strong>
+                            <div class="hero-card-bottom"> <span>SELF-PACED TRAINING</span> <strong> ₦10,500 </strong>
                             </div>
                         </div>
                         <div class="floating-card floating-card-one"> <span class="floating-icon">↗</span>
@@ -1735,6 +2143,156 @@
                         class="trust-line"></span> <span>BUSINESS GROWTH</span>
                 </div>
             </section>
+
+
+            <!-- ================================================= STUDENT RESULTS ================================================= -->
+            <section class="student-results-section" id="student-results">
+                <div class="container">
+
+                    <div class="student-results-heading">
+                        <div>
+                            <div class="eyebrow">
+                                REAL STUDENT RESULTS
+                            </div>
+
+                            <h2>
+                                Learn it.
+                                <span>Apply it.</span>
+                                Earn from it.
+                            </h2>
+                        </div>
+
+                        <p>
+                            These are real results from people applying the strategies,
+                            systems and opportunities taught through the Income Generator
+                            Blueprint.
+                        </p>
+                    </div>
+
+
+                    <!-- QUICK RESULTS -->
+                    <div class="student-results-stats">
+
+                        <div class="student-stat">
+                            <span class="student-stat-label">
+                                ALL-TIME EARNINGS
+                            </span>
+
+                            <strong>₦607K+</strong>
+
+                            <small>
+                                24 sales recorded
+                            </small>
+                        </div>
+
+
+                        <div class="student-stat">
+                            <span class="student-stat-label">
+                                SALES VOLUME
+                            </span>
+
+                            <strong>₦713K+</strong>
+
+                            <small>
+                                31 sales recorded
+                            </small>
+                        </div>
+
+
+                        <div class="student-stat">
+                            <span class="student-stat-label">
+                                STUDENT ACTIVITY
+                            </span>
+
+                            <strong>7+</strong>
+
+                            <small>
+                                Products created and promoted
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <!-- SCREENSHOT PROOF -->
+                    <div class="student-results-gallery">
+
+                        <!-- SCREENSHOT 1 -->
+                        <article class="student-result-image-card">
+
+                            <img src="student-result2.jpeg"
+                                alt="Student sales dashboard showing ₦713,000 in total sales volume" loading="lazy">
+
+                            <div class="student-result-caption">
+                                <span>SALES RESULT</span>
+
+                                <strong>
+                                    ₦713,000 Total Sales Volume
+                                </strong>
+
+                                <p>
+                                    A real sales dashboard showing multiple
+                                    successful transactions.
+                                </p>
+                            </div>
+
+                        </article>
+
+
+                        <!-- SCREENSHOT 2 -->
+                        <article class="student-result-image-card">
+
+                            <img src="student-result1.jpeg"
+                                alt="Student affiliate dashboard showing ₦607,498 all-time earnings" loading="lazy">
+
+                            <div class="student-result-caption">
+                                <span>AFFILIATE RESULT</span>
+
+                                <strong>
+                                    ₦607,498 All-Time Earnings
+                                </strong>
+
+                                <p>
+                                    A real affiliate dashboard showing earnings
+                                    generated from successful sales.
+                                </p>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- DISCLAIMER -->
+                    <div class="student-results-note">
+
+                        <span>IMPORTANT</span>
+
+                        <p>
+                            Results vary from person to person. The screenshots and
+                            figures shown above represent actual examples of results
+                            and are provided for demonstration purposes only. Your
+                            results will depend on your implementation, effort,
+                            strategy, market and other factors.
+                        </p>
+
+                    </div>
+
+
+                    <div class="student-results-whatsapp">
+                        <p>Want to know how the Income Generator Blueprint works?</p>
+
+                        <a href="https://wa.me/2349136566319?text=Hello%20Aceline%2C%20I%20just%20saw%20the%20student%20results%20on%20your%20website%20and%20I%27d%20like%20to%20know%20more%20about%20the%20Income%20Generator%20Blueprint."
+                            target="_blank" rel="noopener noreferrer" class="student-whatsapp-btn">
+                            <span>💬</span>
+                            Ask Us on WhatsApp
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+
+
             <!-- ================================================= JOURNEY ================================================= -->
             <section class="journey-section" id="journey">
                 <div class="container">
@@ -1976,7 +2534,7 @@
                                 <span>IMPLEMENTATION</span>
 
                                 <h3>
-                                    Module 8: How to Make One Millionaire
+                                    Module 8: How to Make One Million
                                 </h3>
 
                                 <p>
@@ -2157,12 +2715,39 @@
                                 <li> <span>✓</span> Certificate upon completion </li>
                             </ul>
                         </div>
-                        <div class="price-box"> <span class="price-label"> LIFETIME ACCESS </span>
-                            <div class="old-price"> ₦75,000 </div>
-                            <div class="main-price"> <small>₦</small> 50,000 </div>
-                            <p> One-time payment. <br> No recurring fees. </p> <button class="btn btn-dark btn-full"
-                                onclick="showPage('payment'); return false;"> Get Lifetime Access
-                            </button> <small class="secure-note"> Secure checkout · Instant access </small>
+                        <div class="price-box">
+                            <span class="price-label">LIFETIME ACCESS</span>
+
+                            <div class="old-price">₦75,000</div>
+
+                            <div class="main-price">
+                                <small>₦</small> 10,500
+                            </div>
+
+                            <p>
+                                One-time payment.<br>
+                                No recurring fees.
+                            </p>
+
+                            <!-- MAIN PAYMENT BUTTON -->
+                            <button class="btn btn-dark btn-full" onclick="showPage('payment'); return false;">
+                                Get Lifetime Access
+                            </button>
+
+                            <small class="secure-note">
+                                Secure checkout · Instant access
+                            </small>
+
+                            <!-- WHATSAPP OPTION -->
+                            <div class="pricing-whatsapp">
+                                <span>Not sure yet?</span>
+
+                                <a href="https://wa.me/2349136566319?text=Hello%20Aceline%2C%20I%27m%20interested%20in%20the%20Income%20Generator%20Blueprint.%20I%27d%20like%20to%20ask%20a%20few%20questions%20before%20enrolling."
+                                    target="_blank" rel="noopener noreferrer" class="pricing-whatsapp-btn">
+                                    <span>💬</span>
+                                    Chat with us on WhatsApp
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2192,7 +2777,7 @@
                         </details>
                         <details class="faq-item">
                             <summary> <span> Is this a one-time payment? </span> <strong>+</strong> </summary>
-                            <p> Yes. ₦50,000 gives you lifetime access to the nine modules and future blueprint updates.
+                            <p> Yes. ₦10,500 gives you lifetime access to the nine modules and future blueprint updates.
                             </p>
                         </details>
                         <details class="faq-item">
@@ -2216,7 +2801,7 @@
                         <h2> Your next income <br> system starts here. </h2>
                         <p> You don't need another year of waiting. Start learning, building and implementing with a
                             practical system you can continue developing for years. </p> <button class="btn btn-white"
-                            onclick="showPage('payment'); return false;"> Join the Blueprint ₦50,000
+                            onclick="showPage('payment'); return false;"> Join the Blueprint ₦10,500
                         </button> <small> One-time payment · Lifetime access </small>
                     </div>
                 </div>
@@ -2230,7 +2815,9 @@
                             <div class="logo-icon">
                                 <img src="logo.jpg" alt="Aceline Logo">
                             </div>
-                            <div class="brand-text"> <strong>ACELINE</strong> <span>TRAINING</span> </div>
+                            <div class="brand-text"> <strong style="color: #000000;">ACELINE</strong>
+                                <span>TRAINING</span>
+                            </div>
                         </a>
                         <p> Building better brands and better businesses through practical knowledge and proven systems.
                         </p>
@@ -2272,7 +2859,7 @@
                 <div class="order-summary">
                     <div class="summary-row">
                         <span>Aceline Income Generator</span>
-                        <span>₦50,000</span>
+                        <span>₦10,500</span>
                     </div>
                     <div class="summary-row">
                         <span>Lifetime Access</span>
@@ -2280,7 +2867,7 @@
                     </div>
                     <div class="summary-row total">
                         <span>Total</span>
-                        <span> ₦50,000</span>
+                        <span> ₦10,500</span>
                     </div>
                 </div>
 
